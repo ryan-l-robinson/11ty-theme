@@ -1,0 +1,98 @@
+/* Variables and general site-wide styles */
+:root {
+    --white: #ffffff;
+    --blue: #1b2c58;
+    --red: #663333;
+    --black: #000000;
+    --grey: #d1d9e2;
+    --max-width: 1400px;
+    --main-gutter-x: 1em;
+    --main-gutter-y: 2em;
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+        --background-color: var(--white);
+        --text-color: var(--black);
+		--text-color-link: var(--blue);
+        --text-color-link-hover: var(--white);
+        --text-color-link-hover-background: var(--blue);
+		--text-color-link-active: var(--black);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+        --background-color: #1E1E1E;
+        --text-color: var(--white);
+		--text-color-link: var(--white);
+        --text-color-link-hover: var(--red);
+        --text-color-link-hover-background: var(--white);
+		--text-color-link-active: var(--white);
+	}
+}
+
+@font-face {
+    font-family: "Atkinson Hyperlegible";
+    src: url('/Atkinson-Hyperlegible-Regular-102.ttf');
+}
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+html {
+	overflow-y: scroll;
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+	margin: 0;
+    background-color: var(--red);
+    color: var(--text-color);
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-size: 16pt;
+}
+
+.container {
+    display: block;
+    width: calc(var(--max-width) - 2rem);
+    margin: 0 auto;
+	padding: 1em;
+}
+
+@media(max-width: 1360px) {
+    .container {
+        width: 100%;
+    }
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+p {
+	line-height: 1.5;
+	margin: 0.5em 0;
+}
+
+a {
+	text-decoration: underline;
+	text-underline-position: under;
+}
+
+li {
+	line-height: 1.5;
+}
+

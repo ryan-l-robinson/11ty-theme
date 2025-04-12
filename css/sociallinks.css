@@ -1,0 +1,23 @@
+/** Aligns with the sociallinks.njk include file **/
+.social-links {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.social-links svg {
+    fill: white;
+}
+
+.social-links svg:is(:hover, :focus) {
+    background-color: var(--white);
+    fill: var(--red);
+}

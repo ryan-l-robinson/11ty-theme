@@ -1,0 +1,43 @@
+/** Styles for individual posts **/
+
+/* Post metadata */
+.post-metadata {
+	display: flex;
+	flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+	gap: .5em 3em;
+    border-bottom: 1px dashed var(--red);
+	padding: 0 0 0.5em 0;
+	margin: 0;
+}
+.post-metadata p {
+    margin: 0;
+}
+.post-tag {
+	text-transform: capitalize;
+}
+
+/** Post description block **/
+.post-description {
+    margin: 1em 3em;
+    border: 1px solid var(--black);
+    padding: 1em;
+    background-color: var(--grey);
+    color: var(--black);
+}
+
+/** Post footer **/
+.links-nextprev {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1em 3em;
+    border-top: 1px dashed var(--red);
+	padding: 1em 0 0;
+}
+
+.links-nextprev p {
+    margin: 0;
+}
