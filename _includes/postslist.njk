@@ -1,0 +1,44 @@
+{%- css %}.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }{% endcss %}
+{%- css %}{% include "public/css/postlist.css" %}{% endcss %}
+<div class="postlist">
+{% for post in postslist | reverse %}
+	<article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+		<h2 class="postlist-item-title"><a href="{{ post.url }}" class="postlist-item-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></h2>
+		<div class="postlist-metadata">
+			<p class="postlist-item-time-container"><time class="postlist-item-time" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL d, yyyy") }}</time></p>
+			{% if post.data.tags | filterTagList | length %}
+				<p>Tags:
+				{%- for tag in post.data.tags | filterTagList %}
+					{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+					<a href="{{ tagUrl }}" class="postlist-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}
+				{%- endfor %}
+				</p>
+			{% endif %}
+		</div>
+		{% if post.data.description %}<p class="postlist-item-description">{{ post.data.description }}</p>{% endif %}
+	</article>
+{% endfor %}
+</div>
+<!--
+<nav aria-labelledby="posts-pagination">
+	<h2 class="posts-pagination visually-hidden">Pagination Links to More Posts</h2>
+	<ul class="pager">
+	    {%- set currentIndex = pagination.pageNumber %}
+		{%- set startIndex = currentIndex - 3 %}
+		{%- set endIndex = currentIndex + 3 %}
+		{% if page.url != pagination.href.first and currentIndex >= 3 %}
+			<li><a href="{{ pagination.href.first }}">« First</a></li>
+		{% endif %}
+		{%- for pageEntry in pagination.pages %}
+			{%- if loop.index0 >= startIndex and loop.index0 <= endIndex %}
+				<li>
+					<a href="{{ pagination.hrefs[ loop.index0 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>{{ loop.index }}</a>
+				</li>
+			{%- endif %}
+		{%- endfor %}
+		{% if page.url != pagination.href.last and currentIndex <= (pagination.pages | length - 3) %}
+			<li><a href="{{ pagination.href.last }}">Last ({{ pagination.pages | length }}) »</a></li>
+		{% endif %}
+	</ul>
+</nav>
+-->

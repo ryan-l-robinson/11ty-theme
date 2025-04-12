@@ -1,0 +1,44 @@
+---
+layout: layouts/main.njk
+---
+{%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %}
+{%- css %}{% include "public/css/post.css" %}{% endcss %}
+<article data-pagefind-body>
+
+{% if series %}
+	<p>Series: {{ series }}</p>
+{% endif %}
+<h1>{{ title }}</h1>
+
+<div class="post-metadata">
+
+	<p><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate("LLLL d, yyyy") }}</time></p>
+	{% if tags | filterTagList | length %}
+		<p>Tags: 
+		{%- for tag in tags | filterTagList %}
+		{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+		<a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}
+		{%- endfor %}
+		</p>
+	{% endif %}
+</div>
+
+{% if description %}
+	<p class="post-description" data-pagefind-weight="3">
+		<strong><abbr title="too long, didn't read">tl;dr</abbr>:</strong> {{ description }}
+	</p>
+{% endif %}
+
+{{ content | safe }}
+
+{%- if collections.posts %}
+{%- set previousPost = collections.posts | getPreviousCollectionItem %}
+{%- set nextPost = collections.posts | getNextCollectionItem %}
+{%- if nextPost or previousPost %}
+<div class="links-nextprev">
+	{%- if previousPost %}<p>Previous: <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a></p>{% endif %}
+	{%- if nextPost %}<p>Next: <a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a></p>{% endif %}
+</div>
+{%- endif %}
+{%- endif %}
+</article>
