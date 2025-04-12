@@ -1,5 +1,5 @@
 {%- css %}.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }{% endcss %}
-{%- css %}{% include "public/css/postlist.css" %}{% endcss %}
+{%- css %}{% include "11ty-theme/css/postlist.css" %}{% endcss %}
 <div class="postlist">
 {% for post in postslist | reverse %}
 	<article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">

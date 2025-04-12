@@ -13,11 +13,11 @@
 		<link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
 
 		{#- Add the contents of each css file to the bundle #}
-		{%- css %}{% include "css/base.css" %}{% endcss %}
-		{%- css %}{% include "css/header.css" %}{% endcss %}
-		{%- css %}{% include "css/pagefind.css" %}{% endcss %}
-		{%- css %}{% include "css/main.css" %}{% endcss %}
-		{%- css %}{% include "css/footer.css" %}{% endcss %}
+		{%- css %}{% include "11ty-theme/css/base.css" %}{% endcss %}
+		{%- css %}{% include "11ty-theme/css/header.css" %}{% endcss %}
+		{%- css %}{% include "11ty-theme/css/pagefind.css" %}{% endcss %}
+		{%- css %}{% include "11ty-theme/css/main.css" %}{% endcss %}
+		{%- css %}{% include "11ty-theme/css/footer.css" %}{% endcss %}
 		<link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
 	</head>
 	<body>
