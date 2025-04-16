@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>{{ title or metadata.title }}</title>
+		<title>{{ metadata.title }}</title>
 		<meta name="description" content="{{ description or metadata.description }}">
 		<meta name="fediverse:creator" content="@Ryan@mstdn.ca" />
   		<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
@@ -24,7 +24,7 @@
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 		<header>
 			<div class="container header-container">
-				<p><a href="/">{{ site_title }}</a></p>
+				<p><a href="/">{{ metadata.title }}</a></p>
 				<div id="search" class="search">
 					<script src="/pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false, pageSize: 10 });"></script>
 				</div>
