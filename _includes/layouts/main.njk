@@ -38,6 +38,7 @@
 					{{ content | safe }}
 				</div>
 				<div class="sidebar">
+					{{ page.show_sidebar }}
 					{% if page.show_sidebar %}
 						{% include "sidebars.njk" %}
 					{% endif %}
