@@ -1,6 +1,6 @@
 {% for sidebar in sidebarblocks %}
-<aside class="sidebar-block" aria-label="About Ryan">
-	<h2>{{ sidebar.title }}</h2>
-  {{ sidebar | safe }}
-</aside>
+	<aside class="sidebar-block" aria-label="About Ryan">
+		<h2>{{ sidebar.data.title }}</h2>
+		{{ sidebar.content | safe }}
+	</aside>
 {% endfor %}
