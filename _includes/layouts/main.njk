@@ -1,3 +1,7 @@
+---
+eleventyImport:
+  collections: ["sidebars"]
+---
 <!doctype html>
 <html lang="{{ metadata.language }}">
 	<head>
@@ -39,6 +43,7 @@
 				</div>
 				<div class="sidebar">
 					{% if show_sidebar %}
+						{% set sidebarblocks = sidebarblocks.items %}
 						{% include "sidebars.njk" %}
 					{% endif %}
 					{% include "serieslist.njk" %}

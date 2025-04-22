@@ -1,5 +1,7 @@
 ---
+{% for sidebar in sidebarblocks %}
 <aside class="sidebar-block" aria-label="About Ryan">
-	<h2>{{ content.title }}</h2>
-  {{ content | safe }}
+	<h2>{{ sidebar.title }}</h2>
+  {{ sidebar | safe }}
 </aside>
+{% endfor %}
