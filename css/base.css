@@ -33,11 +33,6 @@
 	}
 }
 
-@font-face {
-    font-family: "Atkinson Hyperlegible";
-    src: url('/Atkinson-Hyperlegible-Regular-102.ttf');
-}
-
 /* Global stylesheet */
 * {
 	box-sizing: border-box;
