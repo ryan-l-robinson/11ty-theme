@@ -8,13 +8,12 @@ layout: layouts/main.njk
 {% if series %}
 	<p>Series: {{ series }}</p>
 {% endif %}
-<h1>{{ title }}</h1>
 
 <div class="post-metadata">
 
 	<p><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate("LLLL d, yyyy") }}</time></p>
 	{% if tags | filterTagList | length %}
-		<p>Tags: 
+		<p>Tags:
 		{%- for tag in tags | filterTagList %}
 		{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
 		<a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}
