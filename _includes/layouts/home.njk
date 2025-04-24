@@ -6,6 +6,7 @@ pagination:
   data: collections.posts
   reverse: true
   size: 20
+permalink: "posts/page-{{ pagination.pageNumber + 1 }}/index.html"
 ---
 {% set postslist = pagination.items %}
 {% set show_pagination = true %}
