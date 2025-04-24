@@ -8,6 +8,7 @@ pagination:
   size: 20
 ---
 {% set postslist = pagination.items %}
+{% set show_pagination = true %}
 {% include "postslist.njk" %}
 
 {{ content | safe }}
