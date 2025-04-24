@@ -5,7 +5,7 @@ eleventyImport:
 pagination:
   data: collections.posts
   reverse: false
-  size: 100
+  size: 20
 ---
 {% set postslist = pagination.items %}
 {% include "postslist.njk" %}
