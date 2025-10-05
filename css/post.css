@@ -41,3 +41,9 @@
 .links-nextprev p {
     margin: 0;
 }
+
+/** Post content **/
+article img {
+    max-width: 100%;
+    height: auto;
+}
