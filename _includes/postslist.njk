@@ -28,15 +28,23 @@
 				<li><a href="{{ pagination.href.first }}">« First</a></li>
 			{% endif %}
 
-			{%- set startIndex = currentIndex - 2 %}
-			{%- set endIndex = currentIndex + 2 %}
-			{%- for pageEntry in pagination.pages %}
-				{%- if loop.index0 >= startIndex and loop.index0 <= endIndex %}
+			{%- if pagination.totalPages <= 7 %}
+				{%- for pageEntry in pagination.pages %}
 					<li>
 						<a href="{{ pagination.hrefs[ loop.index0 ] }}"{% if currentIndex == loop.index0 %} aria-current="page"{% endif %}>{{ loop.index }}</a>
 					</li>
-				{%- endif %}
-			{%- endfor %}
+				{%- endfor %}
+			{%- else %}
+				{%- set startIndex = currentIndex - 2 %}
+				{%- set endIndex = currentIndex + 2 %}
+				{%- for pageEntry in pagination.pages %}
+					{%- if loop.index0 >= startIndex and loop.index0 <= endIndex %}
+						<li>
+							<a href="{{ pagination.hrefs[ loop.index0 ] }}"{% if currentIndex == loop.index0 %} aria-current="page"{% endif %}>{{ loop.index }}</a>
+						</li>
+					{%- endif %}
+				{%- endfor %}
+			{%- endif %}
 
 			{%- if currentIndex < pagination.totalPages - 1 %}
 				<li><a href="{{ pagination.href.last }}">Last ({{ pagination.totalPages }}) »</a></li>
