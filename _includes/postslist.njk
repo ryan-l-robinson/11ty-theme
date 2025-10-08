@@ -19,7 +19,7 @@
 	</article>
 {% endfor %}
 </div>
-{% if show_pagination %}
+{% if show_pagination && pagination.totalPages > 1 %}
 	<nav aria-labelledby="posts-pagination">
 		<h2 class="posts-pagination visually-hidden">Pagination Links to More Posts</h2>
 		<ul class="pager">
