@@ -1,10 +1,10 @@
 header {
 	width: 100%;
-	background-color: var(--red);
+	background-color: var(--blue);
 	color: var(--white);
 }
 
-.header-container {
+.title-search {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -17,8 +17,7 @@ header {
 	display: flex;
 	justify-content: flex-end;
 	gap: 1em;
-	padding-bottom: 0.25em;
-	background-color: var(--blue);
+	padding: 0 var(--main-gutter-x) 0.25 var(--main-gutter-x);
 	color: var(--white);
 }
 
