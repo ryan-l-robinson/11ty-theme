@@ -1,33 +1,32 @@
 header {
-    width: 100%;
-    background-color: var(--red);
-    color: var(--white);
-    padding: 0 1em;
+	width: 100%;
+	background-color: var(--red);
+	color: var(--white);
 }
 
 .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0 3em;
-    padding: 0 var(--main-gutter-x);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0 3em;
+	padding: 0 var(--main-gutter-x);
 }
 
 .header-nav {
-		display: flex;
-		justify-content: flex-end;
-		gap: 1em;
-		padding-bottom: 0.25em;
-		background-color: var(--blue);
-		color: var(--white);
+	display: flex;
+	justify-content: flex-end;
+	gap: 1em;
+	padding-bottom: 0.25em;
+	background-color: var(--blue);
+	color: var(--white);
 }
 
 header a {
-    color: var(--white);
+	color: var(--white);
 }
 
-header a:is(:focus,:hover) {
-    background-color: var(--white);
-    color: var(--red);
+header a:is(:focus, :hover) {
+	background-color: var(--white);
+	color: var(--red);
 }
