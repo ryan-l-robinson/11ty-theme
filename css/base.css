@@ -1,34 +1,34 @@
 /* Variables and general site-wide styles */
 :root {
-  --white: #ffffff;
-  --blue: #1b2c58;
-  --red: #663333;
-  --black: #000000;
-  --grey: #d1d9e2;
-  --max-width: 1400px;
-  --main-gutter-x: 1em;
-  --main-gutter-y: 2em;
+	--white: #ffffff;
+	--blue: #1b2c58;
+	--red: #663333;
+	--black: #000000;
+	--grey: #d1d9e2;
+	--max-width: 1400px;
+	--main-gutter-x: 1em;
+	--main-gutter-y: 2em;
 	--syntax-tab-size: 2;
 }
 
 @media (prefers-color-scheme: light) {
 	:root {
-    --background-color: var(--white);
-    --text-color: var(--black);
+		--background-color: var(--white);
+		--text-color: var(--black);
 		--text-color-link: var(--blue);
-    --text-color-link-hover: var(--white);
-    --text-color-link-hover-background: var(--blue);
+		--text-color-link-hover: var(--white);
+		--text-color-link-hover-background: var(--blue);
 		--text-color-link-active: var(--black);
 	}
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-    --background-color: #1E1E1E;
-    --text-color: var(--white);
+		--background-color: #1e1e1e;
+		--text-color: var(--white);
 		--text-color-link: var(--white);
-    --text-color-link-hover: var(--red);
-    --text-color-link-hover-background: var(--white);
+		--text-color-link-hover: var(--red);
+		--text-color-link-hover-background: var(--white);
 		--text-color-link-active: var(--white);
 	}
 }
@@ -47,7 +47,7 @@ body {
 	flex-wrap: wrap;
 	justify-content: center;
 	margin: 0;
-	background-color: var(--red);
+	background-color: var(--background-color);
 	color: var(--text-color);
 	font-family: "Atkinson Hyperlegible", sans-serif;
 	font-size: 16pt;
@@ -60,10 +60,10 @@ body {
 	padding: 1em;
 }
 
-@media(max-width: 1360px) {
-  .container {
-    width: 100%;
-  }
+@media (max-width: 1360px) {
+	.container {
+		width: 100%;
+	}
 }
 
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
@@ -90,4 +90,3 @@ a {
 li {
 	line-height: 1.5;
 }
-
