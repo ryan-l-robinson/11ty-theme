@@ -18,7 +18,7 @@ header {
 	display: flex;
 	justify-content: flex-end;
 	gap: 1em;
-	padding: 0 var(--main-gutter-x) 0.25 var(--main-gutter-x);
+	padding: 0 var(--main-gutter-x) 0.25em var(--main-gutter-x);
 	color: var(--white);
 }
 
