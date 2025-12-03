@@ -11,6 +11,7 @@ header {
 	flex-wrap: wrap;
 	gap: 0 3em;
 	padding: 0 var(--main-gutter-x);
+	background-color: var(--red);
 }
 
 .header-nav {
@@ -18,7 +19,6 @@ header {
 	justify-content: flex-end;
 	gap: 1em;
 	padding: 0 var(--main-gutter-x) 0.25 var(--main-gutter-x);
-	background-color: var(--red);
 	color: var(--white);
 }
 
