@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>{{ title }} | {{ metadata.title }}</title>
+		<meta name="geo.region" content="CA-ON">
 		<meta name="description" content="{{ description or metadata.description }}">
 		<meta name="fediverse:creator" content="@Ryan@mstdn.ca" />
   	<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
@@ -28,6 +29,10 @@
 	<body>
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 		<header>
+			<nav class="header-nav" title="External Navigation Links">
+				<h2 class="visually-hidden">External Navigation Links</h2>
+				<a href="https://ryanrobinson.ca">Ryan Robinson Landing Page</a>
+			</nav>
 			<div class="container header-container">
 				<p><a href="/">{{ metadata.title }}</a></p>
 				<div id="search" class="search">
