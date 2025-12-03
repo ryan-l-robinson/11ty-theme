@@ -14,6 +14,15 @@ header {
     padding: 0 var(--main-gutter-x);
 }
 
+.header-nav {
+		display: flex;
+		justify-content: flex-end;
+		gap: 1em;
+		padding-bottom: 0.25em;
+		background-color: var(--blue);
+		color: var(--white);
+}
+
 header a {
     color: var(--white);
 }
