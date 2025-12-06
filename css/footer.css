@@ -1,8 +1,9 @@
-footer {
+.site-footer {
 	width: 100%;
+	border-top: 3px solid var(--border-color);
 	padding: 0 var(--main-gutter-x);
 	background-color: var(--red);
-	font-size: 0.7em;
+	font-size: 14px;
 }
 
 footer p {
