@@ -1,11 +1,4 @@
 /** Styles common to main, whether it has a sidebar or not **/
-.main-wrapper {
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	background-color: var(--grey);
-}
-
 main {
 	max-width: var(--max-width);
 	padding: var(--main-gutter-y) var(--main-gutter-x);

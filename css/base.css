@@ -54,6 +54,13 @@ body {
 	font-size: 16pt;
 }
 
+.wrapper {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	background-color: var(--grey);
+}
+
 .container {
 	display: block;
 	width: 100%;

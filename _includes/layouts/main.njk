@@ -36,20 +36,19 @@
 
 	<body>
 		<a href="#main" class="visually-hidden">Skip to main content</a>
-		<header>
-			<nav class="container header-nav" aria-labelledby="landing-page-header">
-				<h2 class="visually-hidden" id="landing-page-header">External Navigation Links</h2>
-				<a href="https://ryanrobinson.ca" class="with-icon home-page">Ryan's Home Page</a>
-			</nav>
-			<div class="container title-search">
-				<p><a href="/" class="with-icon tech-blog">{{ metadata.title }}</a></p>
-				<div id="search" class="search">
-					<script src="/pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false, pageSize: 10 });"></script>
+		<div class="wrapper">
+			<header>
+				<nav class="container header-nav" aria-labelledby="landing-page-header">
+					<h2 class="visually-hidden" id="landing-page-header">External Navigation Links</h2>
+					<a href="https://ryanrobinson.ca" class="with-icon home-page">Ryan's Home Page</a>
+				</nav>
+				<div class="container title-search">
+					<p><a href="/" class="with-icon tech-blog">{{ metadata.title }}</a></p>
+					<div id="search" class="search">
+						<script src="/pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false, pageSize: 10 });"></script>
+					</div>
 				</div>
-			</div>
-		</header>
-
-		<div class="main-wrapper">
+			</header>
 			<main id="main" class="main-sidebar">
 				<div class="main-content">
 					<h1>{{ title }}</h1>
@@ -64,13 +63,10 @@
 					{% include "tagslist.njk" %}
 				</div>
 			</main>
+			<footer class="container" aria-label="Site Footer">
+					{% include "sociallinks.njk" %}
+					<p>&copy; 2025 Ryan Robinson. Powered by <a href="https://www.11ty.dev/">Eleventy</a> on <a href="https://pages.github.com/">GitHub Pages</a>. The site's font is <a href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible from the Braille Institute</a>.</p>
+			</footer>
 		</div>
-
-		<footer class="container" aria-label="Site Footer">
-				{% include "sociallinks.njk" %}
-				<p>&copy; 2025 Ryan Robinson. Powered by <a href="https://www.11ty.dev/">Eleventy</a> on <a href="https://pages.github.com/">GitHub Pages</a>. The site's font is <a href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible from the Braille Institute</a>.</p>
-		</footer>
-
-		<!-- This page `{{ page.url | htmlBaseUrl }}` was built on {% currentBuildDate %} -->
 	</body>
 </html>
