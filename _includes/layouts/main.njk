@@ -1,5 +1,5 @@
 <!-- Enforce UTF-8 encoding -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ metadata.language }}">
 	<head>
 	  <meta charset="UTF-8">
@@ -30,15 +30,16 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	</head>
+
 	<body>
 		<a href="#main" class="visually-hidden">Skip to main content</a>
 		<header>
-			<nav class="container header-nav" title="External Navigation Links">
-				<h2 class="visually-hidden">External Navigation Links</h2>
-				<a href="https://ryanrobinson.ca">Ryan Robinson Landing Page</a>
+			<nav class="container header-nav" aria-labelledby="landing-page-header">
+				<h2 class="visually-hidden" id="landing-page-header">External Navigation Links</h2>
+				<a href="https://ryanrobinson.ca" class="with-icon home-page">Ryan's Home Page</a>
 			</nav>
 			<div class="container title-search">
-				<p><a href="/">{{ metadata.title }}</a></p>
+				<p><a href="/" class="with-icon tech-blog">{{ metadata.title }}</a></p>
 				<div id="search" class="search">
 					<script src="/pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false, pageSize: 10 });"></script>
 				</div>

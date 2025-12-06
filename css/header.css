@@ -4,14 +4,13 @@ header {
 	color: var(--white);
 }
 
-.title-search {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-wrap: wrap;
-	gap: 0 3em;
-	padding: 0 var(--main-gutter-x);
-	background-color: var(--red);
+header a {
+	color: var(--white);
+}
+
+header a:is(:focus, :hover) {
+	background-color: var(--white);
+	color: var(--red);
 }
 
 .header-nav {
@@ -22,11 +21,12 @@ header {
 	color: var(--white);
 }
 
-header a {
-	color: var(--white);
-}
-
-header a:is(:focus, :hover) {
-	background-color: var(--white);
-	color: var(--red);
+.title-search {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0 3em;
+	padding: 0 var(--main-gutter-x);
+	background-color: var(--red);
 }

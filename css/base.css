@@ -88,6 +88,25 @@ a {
 	text-underline-position: under;
 }
 
+a.with-icon::before {
+	display: inline-flex;
+	margin-right: 5px;
+	vertical-align: bottom;
+	font-family: "FontAwesome";
+}
+
+a.home-page::before {
+	content: "\e1b0";
+}
+
+a.tech-blog::before {
+	content: "\f5fc";
+}
+
+a.theology-blog::before {
+	content: "\f4ba";
+}
+
 li {
 	line-height: 1.5;
 }
