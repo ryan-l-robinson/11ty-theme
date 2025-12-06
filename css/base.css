@@ -27,7 +27,7 @@
 
 @media (prefers-color-scheme: light) {
 	:root {
-		--background-color: var(--grey);
+		--background-color: var(--white);
 		--border-color: var(--blue);
 		--button-border: var(--black);
 		--color: var(--black);
@@ -60,6 +60,7 @@ body {
 
 .wrapper {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	background-color: var(--grey);
 }
