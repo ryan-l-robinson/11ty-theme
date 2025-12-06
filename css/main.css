@@ -7,58 +7,31 @@
 }
 
 main {
-    width: 100%;
+	width: 100%;
 	max-width: var(--max-width);
 	padding: var(--main-gutter-y) var(--main-gutter-x);
-    background-color: var(--background-color);
-}
-
-main :first-child {
-	margin-top: 0;
+	background-color: var(--background-color);
 }
 
 main a {
-    color: var(--text-color-link);
+	color: var(--text-color-link);
 }
 
-main a:is(:hover,:focus) {
-    background-color: var(--text-color-link-hover-background);
-    color: var(--text-color-link-hover);
+main a:is(:hover, :focus) {
+	background-color: var(--text-color-link-hover-background);
+	color: var(--text-color-link-hover);
 }
+
 main a[href]:active {
 	color: var(--text-color-link-active);
 }
 
-/* Direct Links / Markdown Headers */
-.header-anchor {
-	text-decoration: none;
-	font-style: normal;
-	font-size: 1em;
-	margin-left: .1em;
-}
-a[href].header-anchor,
-a[href].header-anchor:visited {
-	color: transparent;
-}
-a[href].header-anchor:focus,
-a[href].header-anchor:hover {
-	text-decoration: underline;
-}
-a[href].header-anchor:focus,
-:hover > a[href].header-anchor {
-	color: #aaa;
-}
-
-h2 + .header-anchor {
-	font-size: 1.5em;
-}
-
 /** Styles for main with a sidebar (most pages) **/
 main.main-sidebar {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    flex-wrap: wrap;
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+	flex-wrap: wrap;
 }
 
 /** Sidebar **/
@@ -74,12 +47,12 @@ main.main-sidebar {
 
 /** Main content **/
 .main-content {
-    width: 70%;
+	width: 70%;
 }
 
-@media(max-width: 60em) {
-    .sidebar,
-    .main-content {
-        width: 100%;
-    }
+@media (max-width: 60em) {
+	.sidebar,
+	.main-content {
+		width: 100%;
+	}
 }
