@@ -12,25 +12,29 @@
 	--syntax-tab-size: 2;
 }
 
-@media (prefers-color-scheme: light) {
-	:root {
-		--background-color: var(--white);
-		--text-color: var(--black);
-		--text-color-link: var(--blue);
-		--text-color-link-hover: var(--white);
-		--text-color-link-hover-background: var(--blue);
-		--text-color-link-active: var(--black);
-	}
-}
-
 @media (prefers-color-scheme: dark) {
 	:root {
 		--background-color: var(--near-black);
-		--text-color: var(--white);
-		--text-color-link: var(--white);
-		--text-color-link-hover: var(--red);
-		--text-color-link-hover-background: var(--white);
-		--text-color-link-active: var(--white);
+		--border-color: var(--white);
+		--button-border: var(--white);
+		--color: var(--white);
+		--color-link: var(--white);
+		--color-link-active: var(--grey);
+		--hover-background: var(--white);
+		--hover-color: var(--blue);
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--background-color: var(--grey);
+		--border-color: var(--blue);
+		--button-border: var(--black);
+		--color: var(--black);
+		--color-link: var(--blue);
+		--color-link-active: var(--grey);
+		--hover-background: var(--blue);
+		--hover-color: var(--white);
 	}
 }
 

@@ -6,16 +6,16 @@ main {
 }
 
 main a {
-	color: var(--text-color-link);
+	color: var(--color-link);
 }
 
 main a:is(:hover, :focus) {
-	background-color: var(--text-color-link-hover-background);
-	color: var(--text-color-link-hover);
+	background-color: var(--hover-background);
+	color: var(--hover-color);
 }
 
 main a[href]:active {
-	color: var(--text-color-link-active);
+	color: var(--color-link-active);
 }
 
 /** Styles for main with a sidebar (most pages) **/
