@@ -1,5 +1,5 @@
 .site-footer {
-	width: 100%;
+	max-width: var(--max-width);
 	border-top: 3px solid var(--border-color);
 	padding: 0 var(--main-gutter-x);
 	background-color: var(--red);
