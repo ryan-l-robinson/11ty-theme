@@ -37,11 +37,11 @@
 	<body>
 		<a href="#main" class="visually-hidden">Skip to main content</a>
 		<header>
-			<nav class="container header-nav" aria-labelledby="landing-page-header">
+			<nav class="header-nav" aria-labelledby="landing-page-header">
 				<h2 class="visually-hidden" id="landing-page-header">External Navigation Links</h2>
 				<a href="https://ryanrobinson.ca" class="with-icon home-page">Ryan's Home Page</a>
 			</nav>
-			<div class="container title-search">
+			<div class="title-search">
 				<p><a href="/" class="with-icon tech-blog">{{ metadata.title }}</a></p>
 				<div id="search" class="search">
 					<script src="/pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false, pageSize: 10 });"></script>
@@ -66,7 +66,7 @@
 			</main>
 		</div>
 
-		<footer class="container site-footer" aria-label="Site Footer">
+		<footer aria-label="Site Footer">
 				{% include "sociallinks.njk" %}
 				<p>&copy; 2025 Ryan Robinson. Powered by <a href="https://www.11ty.dev/">Eleventy</a> on <a href="https://pages.github.com/">GitHub Pages</a>. The site's font is <a href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible from the Braille Institute</a>.</p>
 		</footer>

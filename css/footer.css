@@ -1,4 +1,4 @@
-.site-footer {
+footer {
 	max-width: var(--max-width);
 	border-top: 3px solid var(--border-color);
 	padding: 0 var(--main-gutter-x);
