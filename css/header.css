@@ -33,3 +33,7 @@ header a:is(:focus, :hover) {
 	padding: 0 var(--main-gutter-x);
 	background-color: var(--red);
 }
+
+.search {
+	padding-bottom: 0.5em;
+}
