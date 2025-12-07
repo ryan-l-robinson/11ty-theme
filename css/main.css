@@ -37,6 +37,10 @@ main.main-sidebar {
 	padding: 0.5em;
 }
 
+.sidebar-block:last-child {
+	margin-bottom: 1em;
+}
+
 /** Main content **/
 .main-content {
 	width: 70%;
