@@ -8,7 +8,7 @@
 	--grey: #d1d9e2;
 	--max-width: 1400px;
 	--main-gutter-x: 1em;
-	--main-gutter-y: 2em;
+	--main-gutter-y: 0;
 	--syntax-tab-size: 2;
 }
 
