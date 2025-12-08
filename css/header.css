@@ -35,5 +35,5 @@ header a:is(:focus, :hover) {
 }
 
 .search {
-	padding-bottom: 0.5em;
+	padding-bottom: 0.5em 0;
 }
