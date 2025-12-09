@@ -46,9 +46,7 @@ article img {
     height: auto;
 }
 
-.main-content pre,
-.main-content code {
-    max-width: 100%;
-    overflow-x: auto;
-    box-sizing: border-box;
+article pre,
+article code {
+    white-space: pre-wrap;
 }
