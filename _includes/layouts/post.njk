@@ -34,9 +34,11 @@ layout: layouts/main.njk
 {%- set previousPost = collections.posts | getPreviousCollectionItem %}
 {%- set nextPost = collections.posts | getNextCollectionItem %}
 {%- if nextPost or previousPost %}
-<div class="links-nextprev border-top-section">
-	{%- if previousPost %}<p>Previous: <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a></p>{% endif %}
-	{%- if nextPost %}<p>Next: <a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a></p>{% endif %}
+<div class="border-top-section">
+	<div class="links-nextprev">
+		{%- if previousPost %}<p>Previous: <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a></p>{% endif %}
+		{%- if nextPost %}<p>Next: <a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a></p>{% endif %}
+	</div>
 </div>
 {%- endif %}
 {%- endif %}
