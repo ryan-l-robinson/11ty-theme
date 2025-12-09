@@ -1,16 +1,5 @@
 /** Styles only needed for the views summarizing multiple posts */
 
-.postlist {
-	list-style: none;
-	padding: 0;
-}
-.postlist-item {
-	display: block;
-	margin: 1em 0;
-	border-bottom: 1px dashed var(--red);
-	padding: 0 0 1em 0;
-}
-
 .postlist-item-title {
 	margin-bottom: 0;
 	padding-bottom: 0.25em;

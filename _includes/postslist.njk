@@ -1,8 +1,7 @@
 {%- css %}.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }{% endcss %}
 {%- css %}{% include "11ty-theme/css/postlist.css" %}{% endcss %}
-<div class="postlist">
 {% for post in postslist %}
-	<article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+	<article class="border-bottom-section">
 		<h2 class="postlist-item-title"><a href="{{ post.url }}" class="postlist-item-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></h2>
 		<div class="postlist-metadata">
 			<p class="postlist-item-time-container"><time class="postlist-item-time" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL d, yyyy") }}</time></p>
@@ -18,7 +17,6 @@
 		{% if post.data.description %}<p class="postlist-item-description">{{ post.data.description }}</p>{% endif %}
 	</article>
 {% endfor %}
-</div>
 {% if show_pagination and pagination.totalPages > 1 %}
 	<nav aria-labelledby="posts-pagination">
 		<h2 class="posts-pagination visually-hidden">Pagination Links to More Posts</h2>
