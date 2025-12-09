@@ -35,7 +35,7 @@
     justify-content: space-between;
     gap: 1em 3em;
     border-top: 1px dashed var(--red);
-	padding: 1em 0 0;
+	padding: 1em 0;
 }
 
 .links-nextprev p {
