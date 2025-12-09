@@ -9,7 +9,7 @@ layout: layouts/main.njk
 	<p>Series: {{ series }}</p>
 {% endif %}
 
-<div class="post-metadata">
+<div class="post-metadata border-bottom-section">
 
 	<p><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate("LLLL d, yyyy") }}</time></p>
 	{% if tags | filterTagList | length %}

@@ -121,3 +121,35 @@ li {
 h1.page-title {
 	margin: 0;
 }
+
+/** Border blocks, top (header) and bottom (footer) variations **/
+.border-bottom-section:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.border-bottom-section:not(:last-child):after{
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 70%;
+}
+
+.border-bottom-section:after {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.border-top-section {
+  padding-top: 1rem;
+}
+
+.border-top-section:before {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 70%;
+  padding-top: 1rem;
+}
+
+.border-top-section:before {
+  border-top: 1px solid var(--border-color);
+}
