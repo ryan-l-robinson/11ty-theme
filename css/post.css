@@ -33,7 +33,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 1em 3em;
-	padding: 1em 0;
+	padding: 0 0 1em 0;
 }
 
 .links-nextprev p {
