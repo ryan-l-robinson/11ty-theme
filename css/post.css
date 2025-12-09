@@ -45,3 +45,10 @@ article img {
     max-width: 100%;
     height: auto;
 }
+
+.main-content pre,
+.main-content code {
+    max-width: 100%;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
