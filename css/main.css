@@ -41,6 +41,10 @@ main.main-sidebar {
 	margin-bottom: 1em;
 }
 
+.sidebar-block h2 {
+	margin: 0;
+}
+
 /** Main content **/
 .main-content {
 	width: 70%;
