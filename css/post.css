@@ -46,7 +46,7 @@ article img {
     height: auto;
 }
 
-article pre,
-article code {
+code[class*="language-"],
+pre[class*="language-"] {
     white-space: pre-wrap;
 }
