@@ -117,3 +117,7 @@ a.theology-blog::before {
 li {
 	line-height: 1.5;
 }
+
+h1.page-title {
+	margin: 0;
+}

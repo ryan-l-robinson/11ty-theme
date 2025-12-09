@@ -8,6 +8,7 @@ header a {
 	display: flex;
 	align-items: center;
 	color: var(--white);
+	text-decoration: none;
 }
 
 header a:is(:focus, :hover) {
@@ -38,7 +39,6 @@ header a:is(:focus, :hover) {
 
 .site-title {
 	font-size: 1.5em;
-	text-decoration: none;
 }
 
 .search {
