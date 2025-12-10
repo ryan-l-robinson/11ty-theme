@@ -42,7 +42,8 @@ main.main-sidebar {
 	margin-bottom: 1em;
 }
 
-.sidebar-block h2 {
+.sidebar-block h2,
+.sidebar-block .sidebar-container {
 	padding: 1rem;
 }
 
