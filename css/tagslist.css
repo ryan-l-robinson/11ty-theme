@@ -1,7 +1,7 @@
 /** Aligns with the tagslist.njk include **/
 .tags-list {
 	margin-bottom: 0;
-	padding-left: 1.5em;
+	padding-left: 1em;
 	columns: 1;
 }
 
