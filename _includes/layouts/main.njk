@@ -55,10 +55,8 @@
 					{{ content | safe }}
 				</div>
 				<div class="sidebar">
-					{% if show_sidebar %}
-						{% set sidebarblocks = collections.sidebar %}
-						{% include "sidebars.njk" %}
-					{% endif %}
+					{% set sidebarblocks = collections.sidebar %}
+					{% include "sidebars.njk" %}
 					{% include "serieslist.njk" %}
 					{% include "tagslist.njk" %}
 				</div>
