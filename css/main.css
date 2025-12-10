@@ -61,7 +61,7 @@ main.main-sidebar {
 	padding: 1em 0 0 0;
 }
 
-@media (max-width: 70em) {
+@media (max-width: 1200px) {
 	.sidebar,
 	.main-content {
 		width: 100%;
