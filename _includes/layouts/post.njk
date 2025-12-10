@@ -11,6 +11,12 @@ layout: layouts/main.njk
 
 <div class="post-metadata border-bottom-section">
 
+	{% if description %}
+		<p class="post-description" data-pagefind-weight="3">
+			<strong><abbr title="too long, didn't read">tl;dr</abbr>:</strong> {{ description }}
+		</p>
+	{% endif %}
+
 	<p><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate("LLLL d, yyyy") }}</time></p>
 	{% if tags | filterTagList | length %}
 		<p>Tags:
@@ -22,11 +28,7 @@ layout: layouts/main.njk
 	{% endif %}
 </div>
 
-{% if description %}
-	<p class="post-description" data-pagefind-weight="3">
-		<strong><abbr title="too long, didn't read">tl;dr</abbr>:</strong> {{ description }}
-	</p>
-{% endif %}
+
 
 {{ content | safe }}
 
