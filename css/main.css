@@ -33,7 +33,9 @@ main.main-sidebar {
 }
 
 .sidebar-block {
+	margin-bottom: 1em;
 	border: 1px solid var(--border-color);
+	border-radius: var(--rounded-border-radius);
 }
 
 .sidebar-block:last-child {
@@ -48,6 +50,7 @@ main.main-sidebar {
 .sidebar-block h2 {
 	margin: 0;
 	border-bottom: 1px solid var(--border-color);
+	border-radius: var(--rounded-border-radius) var(--rounded-border-radius) 0 0;
 	background-color: var(--blue);
 	color: var(--white);
 }
