@@ -34,15 +34,21 @@ main.main-sidebar {
 
 .sidebar-block {
 	border: 1px dashed var(--red);
-	padding: 0.5em;
 }
 
 .sidebar-block:last-child {
 	margin-bottom: 1em;
 }
 
+.sidebar-block h2,
+.sidebar-block p {
+	padding: 0.25em;
+}
+
 .sidebar-block h2 {
 	margin: 0;
+	background-color: var(--blue);
+	color: var(--white);
 }
 
 /** Main content **/
