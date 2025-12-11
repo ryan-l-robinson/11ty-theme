@@ -3,8 +3,8 @@
 	columns: 1;
 }
 
-/** Needs to line up with the breakpoint in base.css for when the sidebar moves to the bottom **/
-@media (max-width: 60em) {
+/** Needs to line up with the breakpoint in main.css for when the sidebar moves to the bottom **/
+@media (max-width: 1200px) {
 	.tags-list {
 		columns: 2;
 	}
