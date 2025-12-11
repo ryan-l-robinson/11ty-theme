@@ -1,16 +1,17 @@
 /** Styles for individual posts **/
 
 /* Post metadata */
+
 .post-metadata {
 	display: flex;
 	flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-	gap: .75em 3em;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.75em 3em;
 }
 
 .post-metadata p {
-    margin: 0;
+	margin: 0;
 }
 
 .post-tag {
@@ -18,35 +19,42 @@
 }
 
 /** Post description block **/
+
 .post-description {
-    margin: 1em 3em;
-    border: 1px solid var(--black);
-    padding: 1em;
-    background-color: var(--grey);
-    color: var(--black);
-}
-
-/** Post footer **/
-.links-nextprev {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1em 3em;
-	padding: 0 0 1em 0;
-}
-
-.links-nextprev p {
-    margin: 0;
+	margin: 1em 3em;
+	border: 1px solid var(--black);
+	padding: 1em;
+	background-color: var(--grey);
+	color: var(--black);
 }
 
 /** Post content **/
+
 article img {
-    max-width: 100%;
-    height: auto;
+	max-width: 100%;
+	height: auto;
 }
 
 code[class*="language-"],
 pre[class*="language-"] {
-    white-space: pre-wrap;
+	white-space: pre-wrap;
+}
+
+/** Post footer **/
+
+.links-nextprev {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 1em 3em;
+	padding: 0 0 1em 0;
+}
+
+.links-nextprev p {
+	margin: 0;
+}
+
+.links-nextprev a {
+	display: block;
 }
