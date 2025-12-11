@@ -55,6 +55,7 @@ pre[class*="language-"] {
 	margin: 0;
 }
 
-.links-nextprev a {
+.links-nextprev a.icon-before,
+.links-nextprev a.icon-after {
 	display: block;
 }
