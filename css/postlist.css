@@ -53,10 +53,8 @@
 	padding: 0.5em;
 	text-decoration: none;
 	line-height: 1em;
-}
-
-.pager li a {
 	background-color: var(--blue);
+	color: var(--white);
 }
 
 .pager li a:is(:hover, :focus) {
