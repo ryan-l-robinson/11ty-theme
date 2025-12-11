@@ -28,9 +28,8 @@
 		<link rel="canonical" href="{{ metadata.url }}{{ page.url }}">
   	<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
 
-		{#- Atom and JSON feeds #}
+		{#- Atom (RSS) feed #}
 		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
-		<link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
 
 		{#- Add the contents of each css file to the bundle #}
 		{%- css %}{% include "11ty-theme/css/base.css" %}{% endcss %}
