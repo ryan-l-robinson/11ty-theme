@@ -83,14 +83,22 @@ a {
 	text-underline-position: under;
 }
 
-a.with-icon {
+a.icon-before,
+a.icon-after {
 	display: flex;
 	align-items: center;
 }
 
-a.with-icon::before {
+a.icon-before::before {
 	display: inline-flex;
 	margin-right: 5px;
+	vertical-align: bottom;
+	font-family: "FontAwesome";
+}
+
+a.icon-after::after {
+	display: inline-flex;
+	margin-left: 5px;
 	vertical-align: bottom;
 	font-family: "FontAwesome";
 }
