@@ -1,6 +1,11 @@
-/** Aligns with the tagslist.njk include **/
-.tags-list {
+/** Aligns with the tagslist.njk and tags.njk include **/
+
+.sidebar-block .tags-list {
 	columns: 1;
+}
+
+.main-content .tags-list {
+	columns: 3;
 }
 
 /** Needs to line up with the breakpoint in main.css for when the sidebar moves to the bottom **/
@@ -10,7 +15,7 @@
 	}
 }
 
-@media (max-width: 30em) {
+@media (max-width: 35em) {
 	.tags-list {
 		columns: 1;
 	}
