@@ -119,8 +119,16 @@ a.pager-first::before {
 	content: "\f100";
 }
 
+a.pager-prev::before {
+	content: "\f104";
+}
+
 a.pager-last::after {
 	content: "\f101";
+}
+
+a.pager-next::after {
+	content: "\f105";
 }
 
 .visually-hidden {
