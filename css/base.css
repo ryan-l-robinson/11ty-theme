@@ -115,3 +115,15 @@ a.theology-blog::before {
 li {
 	line-height: 1.5;
 }
+
+blockquote:before {
+	content: "“";
+	left: -5rem;
+	top: -2rem;
+}
+
+blockquote:after {
+	content: "”";
+	right: -5rem;
+	bottom: 1rem;
+}
