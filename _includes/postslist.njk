@@ -1,5 +1,7 @@
 {%- css %}.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }{% endcss %}
 {%- css %}{% include "11ty-theme/css/postlist.css" %}{% endcss %}
+
+{# Posts #}
 {% for post in postslist %}
 	<article class="border-bottom-section">
 		<h2 class="postlist-item-title"><a href="{{ post.url }}" class="postlist-item-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></h2>
@@ -17,13 +19,15 @@
 		{% if post.data.description %}<p class="postlist-item-description">{{ post.data.description }}</p>{% endif %}
 	</article>
 {% endfor %}
+
+{# Pagination #}
 {% if pagination and pagination.totalPages > 1 %}
 	<nav aria-labelledby="posts-pagination">
 		<h2 class="posts-pagination visually-hidden">Pagination Links to More Posts</h2>
 		<ul class="pager">
 			{%- set currentIndex = pagination.pageNumber %}
 			{%- if currentIndex > 0 %}
-				<li><a href="{{ pagination.href.first }}">« First</a></li>
+				<li><a href="{{ pagination.href.first }}" class="with-icon pager-first">First</a></li>
 			{% endif %}
 
 			{%- if pagination.totalPages <= 7 %}
@@ -45,7 +49,7 @@
 			{%- endif %}
 
 			{%- if currentIndex < pagination.totalPages - 1 %}
-				<li><a href="{{ pagination.href.last }}">Last ({{ pagination.totalPages }}) »</a></li>
+				<li><a href="{{ pagination.href.last }}" class="with-icon pager-last">Last ({{ pagination.totalPages }})</a></li>
 			{% endif %}
 		</ul>
 	</nav>

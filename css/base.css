@@ -102,6 +102,14 @@ a.theology-blog::before {
 	content: "\f4ba";
 }
 
+a.pager-first::before {
+	content: "\f100";
+}
+
+a.pager-last::before {
+	content: "\f101";
+}
+
 .visually-hidden {
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
