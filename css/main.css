@@ -1,5 +1,12 @@
-/** Styles common to main, whether it has a sidebar or not **/
+/** Styles for main section **/
+
 main {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: var(--main-gutter-x);
+	width: 100%;
 	max-width: var(--max-width);
 	padding: var(--main-gutter-y) var(--main-gutter-x);
 	background-color: var(--background-color);
@@ -18,16 +25,8 @@ main a[href]:active {
 	color: var(--color-link-active);
 }
 
-/** Styles for main with a sidebar (most pages) **/
-main.main-sidebar {
-	display: flex;
-	flex-direction: row-reverse;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	gap: var(--main-gutter-x);
-}
-
 /** Sidebar **/
+
 .sidebar {
 	width: calc(25% - var(--main-gutter-x));
 }
@@ -56,6 +55,7 @@ main.main-sidebar {
 }
 
 /** Main content **/
+
 .main-content {
 	width: 75%;
 }
