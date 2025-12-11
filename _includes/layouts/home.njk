@@ -7,7 +7,9 @@ pagination:
   reverse: true
   size: 20
 ---
-{{ content | safe }}
+<div class="border-bottom-section">
+	{{ content | safe }}
+</div>
 
 {% set postslist = pagination.items %}
 {% set show_pagination = true %}
