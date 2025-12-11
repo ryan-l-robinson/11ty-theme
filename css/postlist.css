@@ -1,5 +1,7 @@
 /** Styles only needed for the views summarizing multiple posts */
 
+/** Lists of posts **/
+
 .postlist-item-title {
 	margin: 0;
 	padding-bottom: 0.25em;
@@ -15,11 +17,13 @@
 	padding: 0;
 	margin: 0.5em 0;
 }
+
 .postlist-metadata p {
 	margin: 0;
 	line-height: 1.5em;
 	font-size: 0.8em;
 }
+
 .postlist-tag {
 	text-transform: capitalize;
 }
@@ -27,6 +31,8 @@
 .postlist-item :last-child {
 	margin-bottom: 0;
 }
+
+/** Pagination **/
 
 .pager {
 	display: flex;
