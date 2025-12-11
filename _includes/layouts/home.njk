@@ -9,8 +9,9 @@ pagination:
   size: 20
 permalink: "posts/page-{{ pagination.pageNumber + 1 }}/index.html"
 ---
+{{ content | safe }}
+
 {% set postslist = pagination.items %}
 {% set show_pagination = true %}
 {% include "postslist.njk" %}
 
-{{ content | safe }}
