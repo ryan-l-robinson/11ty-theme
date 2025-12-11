@@ -40,20 +40,6 @@
 	}
 }
 
-/** For accessibility, visually hidden text **/
-
-.visually-hidden {
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
-}
-
-/** Common elements that could appear on any type of page **/
-
 h1 {
 	margin: 0;
 	font-size: 2em;
@@ -114,6 +100,16 @@ a.tech-blog::before {
 
 a.theology-blog::before {
 	content: "\f4ba";
+}
+
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
 }
 
 li {
