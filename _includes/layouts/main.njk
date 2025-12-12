@@ -1,35 +1,35 @@
 <!-- Enforce UTF-8 encoding -->
 <!DOCTYPE html>
-<html lang="{{ metadata.language }}">
+<html lang="{{ meta.language }}">
 	<head>
 	  <meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2E2C2C">
-		<meta name="geo.region" content="{{ metadata.region }}">
-		<meta name="author" content="{{ metadata.author.name }}">
-		<meta name="description" content="{{ description or metadata.description }}">
-		<meta name="fediverse:creator" content="{{ metadata.fediverse }}" />
+		<meta name="geo.region" content="{{ meta.region }}">
+		<meta name="author" content="{{ general.author.name }}">
+		<meta name="description" content="{{ description or general.description }}">
+		<meta name="fediverse:creator" content="{{ meta.fediverse }}" />
 		<meta http-equiv="X-Content-Type-Options" content="nosniff" />
 
-		<meta property="og:title" content="{{ title or metadata.title }}">
-		<meta property="og:description" content="{{ description or metadata.description }}">
-		<meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
-		<meta property="og:image" content="{{ metadata.url }}/img/Ryan.png">
+		<meta property="og:title" content="{{ title or general.title }}">
+		<meta property="og:description" content="{{ description or general.description }}">
+		<meta property="og:url" content="{{ general.url }}{{ page.url }}">
+		<meta property="og:image" content="{{ general.url }}/img/Ryan.png">
 		<meta property="og:type" content="website">
 
 		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:title" content="{{ title or metadata.title }}">
-		<meta name="twitter:description" content="{{ description or metadata.description }}">
-		<meta name="twitter:image" content="{{ metadata.url }}/img/Ryan.png">
+		<meta name="twitter:title" content="{{ title or general.title }}">
+		<meta name="twitter:description" content="{{ description or general.description }}">
+		<meta name="twitter:image" content="{{ general.url }}/img/Ryan.png">
 
-		<title>{{ title }} | {{ metadata.title }}</title>
+		<title>{{ title }} | {{ general.title }}</title>
 
-		<link rel="canonical" href="{{ metadata.url }}{{ page.url }}">
+		<link rel="canonical" href="{{ general.url }}{{ page.url }}">
   	<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
 
 		{#- Atom (RSS) feed #}
-		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
+		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ general.title }}">
 
 		{#- Add the contents of each css file to the bundle #}
 		{%- css %}{% include "11ty-theme/css/base.css" %}{% endcss %}
@@ -58,7 +58,7 @@
 					<a href="https://ryanrobinson.ca" class="icon-before home-page">Ryan's Home Page</a>
 				</nav>
 				<div class="container title-search">
-					<p class="site-title"><a href="/" class="icon-before {{ metadata.link_icon }}">{{ metadata.title }}</a></p>
+					<p class="site-title"><a href="/" class="icon-before {{ general.link_icon }}">{{ general.title }}</a></p>
 					<div id="search" class="search">
 						<script src="/pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false, pageSize: 10 });"></script>
 					</div>
@@ -78,7 +78,7 @@
 			</main>
 			<footer class="container" aria-label="Site Footer">
 					{% include "sociallinks.njk" %}
-					<p>&copy; {% year %} <a href="{{ metadata.author.url }}">{{ metadata.author.name }}</a>. Powered by <a href="https://www.11ty.dev/">Eleventy</a>. The site's font is <a href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible from the Braille Institute</a>.</p>
+					<p>&copy; {% year %} <a href="{{ general.author.url }}">{{ general.author.name }}</a>. Powered by <a href="https://www.11ty.dev/">Eleventy</a>. The site's font is <a href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible from the Braille Institute</a>.</p>
 			</footer>
 		</div>
 	</body>
