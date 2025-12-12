@@ -12,5 +12,5 @@ permalink: "/{% if pagination.pageNumber > 0 %}posts/{{ pagination.pageNumber + 
 </div>
 
 {% set postList = pagination.items %}
-{% set pagination = posts.pagination %}
+{% set pagination = pagination %}
 {% include "post-list.njk" %}
