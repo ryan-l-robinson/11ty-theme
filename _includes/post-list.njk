@@ -2,7 +2,7 @@
 {%- css %}{% include "11ty-theme/css/post-list.css" %}{% endcss %}
 
 {# Posts #}
-{% for post in post-list %}
+{% for post in postList %}
 	<article class="border-bottom-section">
 		<h2 class="post-list-item-title"><a href="{{ post.url }}" class="post-list-item-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></h2>
 		<div class="post-list-metadata">
