@@ -1,5 +1,6 @@
 {# Pagination navigation #}
 {% if pagination and pagination.totalPages > 1 %}
+	{%- css %}{% include "11ty-theme/css/pager.css" %}{% endcss %}
 	<nav aria-labelledby="posts-pagination">
 		<h2 class="posts-pagination visually-hidden">Pagination Links to More Posts</h2>
 		<ul class="pager">
