@@ -4,7 +4,7 @@ pagination:
   data: collections.posts
   reverse: true
   size: 20
-  alias: posts
+  alias: allPosts
 permalink: "/{% if pagination.pageNumber > 0 %}posts/{{ pagination.pageNumber + 1 }}/{% endif %}"
 ---
 <div class="border-bottom-section">
@@ -12,5 +12,25 @@ permalink: "/{% if pagination.pageNumber > 0 %}posts/{{ pagination.pageNumber + 
 </div>
 
 {% set postList = pagination.items %}
-{% set pagination = pagination %}
 {% include "post-list.njk" %}
+
+{# Create the hrefs for the pager, mimicking tag-page.njk #}
+{% set hrefsObj = {"items":[]} %}
+{% for i in range(0, pagination.totalPages) %}
+    {% if i == 0 %}
+        {% set pageUrl %}/{% endset %}
+    {% else %}
+        {% set pageUrl %}/posts/{{ i + 1 }}/{% endset %}
+    {% endif %}
+    {%- set _ = hrefsObj.items.push(pageUrl) %}
+{% endfor %}
+
+{# Recreate the pagination object for the pager, adding hrefs #}
+{% set pagination = {
+    "hrefs": hrefsObj.items,
+    "pageNumber": pagination.pageNumber,
+    "totalPages": pagination.pages | length,
+    "href": pagination.href
+} %}
+
+{% include "pager.njk" %}
