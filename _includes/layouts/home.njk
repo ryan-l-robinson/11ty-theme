@@ -13,13 +13,4 @@ permalink: "/{% if pagination.pageNumber > 0 %}posts/{{ pagination.pageNumber + 
 
 {% set postList = pagination.items %}
 {% include "post-list.njk" %}
-
-{# Recreate the pagination object for the pager, adding hrefs #}
-{% set pagination = {
-    "hrefs": pagination.hrefs,
-    "pageNumber": pagination.pageNumber,
-    "totalPages": pagination.pages | length,
-    "href": pagination.href
-} %}
-
 {% include "pager.njk" %}

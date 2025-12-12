@@ -105,7 +105,7 @@ export default function (eleventyConfig, options = {}) {
 	eleventyConfig.addBundle("js", { toFileDirectory: "dist" });
 
 	// 5. COLLECTIONS
-	function createPagedCollection(collectionApi, { grouperFn, pageSize, keySort = 'asc' }) {
+	function createPagedCollection(collectionApi, { grouperFn, pageSize, keySort = 'asc', permalink }) {
 		let postsByKey = {};
 		collectionApi.getFilteredByTag("posts").forEach(post => {
 			const keys = grouperFn(post);
@@ -130,13 +130,21 @@ export default function (eleventyConfig, options = {}) {
 			postsByKey[key].sort((a, b) => b.date - a.date);
 	
 			let totalPages = Math.ceil(postsByKey[key].length / pageSize);
+			let hrefs = [];
+			if(permalink) {
+				for(let i = 1; i <= totalPages; i++) {
+					hrefs.push(permalink(key, i));
+				}
+			}
 	
 			lodash.chunk(postsByKey[key], pageSize).forEach((posts, index) => {
 				postsByKeyPaged.push({
 					key: key,
 					posts: posts,
 					pageNumber: index + 1,
-					totalPages: totalPages
+					totalPages: totalPages,
+					hrefs: hrefs,
+					pages: new Array(totalPages)
 				});
 			});
 		}
@@ -150,7 +158,14 @@ export default function (eleventyConfig, options = {}) {
 		return createPagedCollection(collectionApi, {
 			grouperFn: (post) => filterTagList(post.data.tags),
 			pageSize: 10,
-			keySort: 'asc'
+			keySort: 'asc',
+			permalink: (key, pageNumber) => {
+				const keySlug = lodash.kebabCase(key);
+				if (pageNumber === 1) {
+					return `/tags/${keySlug}/`;
+				}
+				return `/tags/${keySlug}/${pageNumber}/`;
+			}
 		});
 	});
 
@@ -158,7 +173,13 @@ export default function (eleventyConfig, options = {}) {
 		return createPagedCollection(collectionApi, {
 			grouperFn: (post) => post.date.getFullYear(),
 			pageSize: 20,
-			keySort: 'desc'
+			keySort: 'desc',
+			permalink: (key, pageNumber) => {
+				if (pageNumber === 1) {
+					return `/${key}/`;
+				}
+				return `/${key}/${pageNumber}/`;
+			}
 		});
 	});
 

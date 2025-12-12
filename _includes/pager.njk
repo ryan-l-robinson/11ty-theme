@@ -1,5 +1,6 @@
 {# Pagination navigation #}
-{% if pagination and pagination.totalPages > 1 %}
+{% set totalPages = pagination.pages | length %}
+{% if pagination and totalPages > 1 %}
 	{%- css %}{% include "11ty-theme/css/pager.css" %}{% endcss %}
 	<nav aria-labelledby="posts-pagination">
 		<h2 class="posts-pagination visually-hidden">Pagination Links to More Posts</h2>
@@ -9,8 +10,8 @@
 				<li><a href="{{ pagination.href.first or pagination.hrefs[0] }}" class="icon-before pager-first">First</a></li>
 			{% endif %}
 
-			{%- if pagination.totalPages <= 7 %}
-				{%- for i in range(0, pagination.totalPages) %}
+			{%- if totalPages <= 7 %}
+				{%- for i in range(0, totalPages) %}
 					<li>
 						<a href="{{ pagination.hrefs[i] }}"{% if currentIndex == i %} aria-current="page"{% endif %}>{{ i + 1 }}</a>
 					</li>
@@ -18,7 +19,7 @@
 			{%- else %}
 				{%- set startIndex = currentIndex - 2 %}
 				{%- set endIndex = currentIndex + 2 %}
-				{%- for i in range(0, pagination.totalPages) %}
+				{%- for i in range(0, totalPages) %}
 					{%- if i >= startIndex and i <= endIndex %}
 						<li>
 							<a href="{{ pagination.hrefs[i] }}"{% if currentIndex == i %} aria-current="page"{% endif %}>{{ i + 1 }}</a>
@@ -27,8 +28,8 @@
 				{%- endfor %}
 			{%- endif %}
 
-			{%- if currentIndex < pagination.totalPages - 1 %}
-				<li><a href="{{ pagination.href.last or pagination.hrefs[pagination.hrefs.length - 1] }}" class="icon-after pager-last">Last ({{ pagination.totalPages }})</a></li>
+			{%- if currentIndex < totalPages - 1 %}
+				<li><a href="{{ pagination.href.last or pagination.hrefs[pagination.hrefs.length - 1] }}" class="icon-after pager-last">Last ({{ totalPages }})</a></li>
 			{% endif %}
 		</ul>
 	</nav>
