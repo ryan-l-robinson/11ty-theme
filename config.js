@@ -118,7 +118,7 @@ export default function (eleventyConfig, options = {}) {
 				postsByKey[keyString].push(post);
 			});
 		});
-	
+
 		let postsByKeyPaged = [];
 		let sortedKeys = Object.keys(postsByKey).sort();
 
@@ -128,7 +128,7 @@ export default function (eleventyConfig, options = {}) {
 
 		for(let key of sortedKeys) {
 			postsByKey[key].sort((a, b) => b.date - a.date);
-	
+
 			let totalPages = Math.ceil(postsByKey[key].length / pageSize);
 			let hrefs = [];
 			if(permalink) {
@@ -136,13 +136,12 @@ export default function (eleventyConfig, options = {}) {
 					hrefs.push(permalink(key, i));
 				}
 			}
-	
+
 			lodash.chunk(postsByKey[key], pageSize).forEach((posts, index) => {
 				postsByKeyPaged.push({
 					key: key,
 					posts: posts,
-					pageNumber: index + 1,
-					totalPages: totalPages,
+					pageNumber: index,
 					hrefs: hrefs,
 					pages: new Array(totalPages)
 				});
@@ -154,7 +153,7 @@ export default function (eleventyConfig, options = {}) {
 	eleventyConfig.addCollection("tagPages", function (collectionApi) {
 		const filterTagList = (tags) =>
 		  (tags || []).filter((tag) => ["all", "posts"].indexOf(tag) === -1);
-	
+
 		return createPagedCollection(collectionApi, {
 			grouperFn: (post) => filterTagList(post.data.tags),
 			pageSize: 10,
