@@ -1,4 +1,4 @@
-/** Aligns with the sociallinks.njk include file **/
+/** Aligns with the social-links.njk include file **/
 .social-links {
 	display: grid;
 	grid-template-columns: repeat(5, auto);

@@ -1,22 +1,22 @@
-{%- css %}.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }{% endcss %}
-{%- css %}{% include "11ty-theme/css/postlist.css" %}{% endcss %}
+{%- css %}.post-list { counter-reset: start-from {{ (postListCounter or postList.length) + 1 }} }{% endcss %}
+{%- css %}{% include "11ty-theme/css/post-list.css" %}{% endcss %}
 
 {# Posts #}
-{% for post in postslist %}
+{% for post in post-list %}
 	<article class="border-bottom-section">
-		<h2 class="postlist-item-title"><a href="{{ post.url }}" class="postlist-item-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></h2>
-		<div class="postlist-metadata">
-			<p class="postlist-item-time-container"><time class="postlist-item-time" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL d, yyyy") }}</time></p>
+		<h2 class="post-list-item-title"><a href="{{ post.url }}" class="post-list-item-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></h2>
+		<div class="post-list-metadata">
+			<p class="post-list-item-time-container"><time class="post-list-item-time" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL d, yyyy") }}</time></p>
 			{% if post.data.tags | filterTagList | length %}
 				<p>Tags:
 				{%- for tag in post.data.tags | filterTagList %}
 					{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-					<a href="{{ tagUrl }}" class="postlist-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}
+					<a href="{{ tagUrl }}" class="post-list-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}
 				{%- endfor %}
 				</p>
 			{% endif %}
 		</div>
-		{% if post.data.description %}<p class="postlist-item-description">{{ post.data.description }}</p>{% endif %}
+		{% if post.data.description %}<p class="post-list-item-description">{{ post.data.description }}</p>{% endif %}
 	</article>
 {% endfor %}
 

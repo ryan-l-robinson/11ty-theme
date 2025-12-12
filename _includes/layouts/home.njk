@@ -1,15 +1,15 @@
 ---
 layout: layouts/main.njk
-eleventyImport:
-  collections: ["posts"]
 pagination:
   data: collections.posts
   reverse: true
   size: 20
+  alias: posts
+permalink: "/{% if pagination.pageNumber > 0 %}posts/{{ pagination.pageNumber + 1 }}/{% endif %}"
 ---
 <div class="border-bottom-section">
 	{{ content | safe }}
 </div>
 
-{% set postslist = pagination.items %}
-{% include "postslist.njk" %}
+{% set postList = pagination.items %}
+{% include "posts-list.njk" %}
