@@ -93,6 +93,10 @@ export default function (eleventyConfig, options = {}) {
 		},
 	);
 
+	eleventyConfig.addFilter("slugify", (str) => {
+		return lodash.kebabCase(str);
+	});
+
 	// 3. SHORTCODES
 	eleventyConfig.addShortcode("currentBuildDate", () =>
 		new Date().toISOString(),
@@ -159,7 +163,7 @@ export default function (eleventyConfig, options = {}) {
 			pageSize: 10,
 			keySort: 'asc',
 			permalink: (key, pageNumber) => {
-				const keySlug = lodash.kebabCase(key);
+				const keySlug = eleventyConfig.getFilter("slugify")(key);
 				if (pageNumber === 1) {
 					return `/tags/${keySlug}/`;
 				}
