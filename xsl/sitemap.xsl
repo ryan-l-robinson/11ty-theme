@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="3.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:sitemap="http://www.sitemaps.org/schemas/sitemap/0.9">
+                xmlns:sitemap="http://www.sitemaps.org/schemas/sitemap/0.9"
+                xpath-default-namespace="http://www.sitemaps.org/schemas/sitemap/0.9">
     <xsl:output method="html" version="1.0" encoding="UTF-8" indent="yes"/>
     <xsl:template match="/">
         <html xmlns="http://www.w3.org/1999/xhtml">
@@ -55,14 +56,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <xsl:for-each select="sitemap:urlset/sitemap:url">
+                            <xsl:for-each select="urlset/url">
                                 <tr>
                                     <td>
-                                        <xsl:variable name="loc" select="sitemap:loc"/>
-                                        <a href="{$loc}"><xsl_value-of select="sitemap:loc"/></a>
+                                        <xsl:variable name="loc" select="loc"/>
+                                        <a href="{$loc}"><xsl_value-of select="loc"/></a>
                                     </td>
                                     <td>
-                                        <xsl:value-of select="sitemap:lastmod"/>
+                                        <xsl:value-of select="lastmod"/>
                                     </td>
                                 </tr>
                             </xsl:for-each>
