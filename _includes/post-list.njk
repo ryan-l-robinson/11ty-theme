@@ -19,38 +19,3 @@
 		{% if post.data.description %}<p class="post-list-item-description">{{ post.data.description }}</p>{% endif %}
 	</article>
 {% endfor %}
-
-{# Pagination #}
-{% if pagination and pagination.totalPages > 1 %}
-	<nav aria-labelledby="posts-pagination">
-		<h2 class="posts-pagination visually-hidden">Pagination Links to More Posts</h2>
-		<ul class="pager">
-			{%- set currentIndex = pagination.pageNumber %}
-			{%- if currentIndex > 0 %}
-				<li><a href="{{ pagination.href.first }}" class="icon-before pager-first">First</a></li>
-			{% endif %}
-
-			{%- if pagination.totalPages <= 7 %}
-				{%- for pageEntry in pagination.pages %}
-					<li>
-						<a href="{{ pagination.hrefs[ loop.index0 ] }}"{% if currentIndex == loop.index0 %} aria-current="page"{% endif %}>{{ loop.index }}</a>
-					</li>
-				{%- endfor %}
-			{%- else %}
-				{%- set startIndex = currentIndex - 2 %}
-				{%- set endIndex = currentIndex + 2 %}
-				{%- for pageEntry in pagination.pages %}
-					{%- if loop.index0 >= startIndex and loop.index0 <= endIndex %}
-						<li>
-							<a href="{{ pagination.hrefs[ loop.index0 ] }}"{% if currentIndex == loop.index0 %} aria-current="page"{% endif %}>{{ loop.index }}</a>
-						</li>
-					{%- endif %}
-				{%- endfor %}
-			{%- endif %}
-
-			{%- if currentIndex < pagination.totalPages - 1 %}
-				<li><a href="{{ pagination.href.last }}" class="icon-after pager-last">Last ({{ pagination.totalPages }})</a></li>
-			{% endif %}
-		</ul>
-	</nav>
-{% endif %}

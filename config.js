@@ -10,6 +10,7 @@ import pluginNavigation from "@11ty/eleventy-navigation";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 import { execSync } from "child_process";
 import { DateTime } from "luxon";
+import lodash from 'lodash';
 
 /**
  * @param {import("@11ty/eleventy").UserConfig} eleventyConfig
@@ -104,70 +105,81 @@ export default function (eleventyConfig, options = {}) {
 	eleventyConfig.addBundle("js", { toFileDirectory: "dist" });
 
 	// 5. COLLECTIONS
-	eleventyConfig.addCollection("tagPages", function (collectionApi) {
-		const posts = collectionApi.getFilteredByTag("posts").reverse();
-		const tagMap = new Map();
-		const pageSize = 10;
-		const tagPages = [];
-		const slugify = eleventyConfig.getFilter("slugify");
-
-		// Exclude utility tags
-		const filterTagList = (tags) =>
-			(tags || []).filter((tag) => ["all", "posts"].indexOf(tag) === -1);
-
-		// Group posts by tag
-		for (const post of posts) {
-			const tags = filterTagList(post.data.tags);
-			for (const tag of tags) {
-				if (!tagMap.has(tag)) {
-					tagMap.set(tag, []);
+	function createPagedCollection(collectionApi, { grouperFn, pageSize, keySort = 'asc', permalink }) {
+		let postsByKey = {};
+		collectionApi.getFilteredByTag("posts").forEach(post => {
+			const keys = grouperFn(post);
+			(Array.isArray(keys) ? keys : [keys]).forEach(key => {
+				if (key === undefined || key === null) return;
+				const keyString = String(key);
+				if(!postsByKey[keyString]) {
+					postsByKey[keyString] = [];
 				}
-				tagMap.get(tag).push(post);
-			}
+				postsByKey[keyString].push(post);
+			});
+		});
+
+		let postsByKeyPaged = [];
+		let sortedKeys = Object.keys(postsByKey).sort();
+
+		if (keySort === 'desc') {
+			sortedKeys.reverse();
 		}
 
-		// Create paginated pages for each tag
-		for (const [tag, posts] of tagMap.entries()) {
-			const pageCount = Math.ceil(posts.length / pageSize);
-			const tagSlug = slugify(tag);
-			const pages = [];
+		for(let key of sortedKeys) {
+			postsByKey[key].sort((a, b) => b.date - a.date);
 
-			for (let i = 0; i < pageCount; i++) {
-				const start = i * pageSize;
-				const end = start + pageSize;
-				pages.push({
-					tagName: tag,
-					pageNumber: i,
-					totalPages: pageCount,
-					posts: posts.slice(start, end),
-				});
+			let totalPages = Math.ceil(postsByKey[key].length / pageSize);
+			let hrefs = [];
+			if(permalink) {
+				for(let i = 1; i <= totalPages; i++) {
+					hrefs.push(permalink(key, i));
+				}
 			}
 
-			// Add pagination data to each page
-			for (let i = 0; i < pageCount; i++) {
-				const hrefs = [];
-				for (let j = 0; j < pageCount; j++) {
-					hrefs.push(
-						j === 0 ? `/tags/${tagSlug}/` : `/tags/${tagSlug}/${j + 1}/`,
-					);
-				}
-
-				pages[i].pagination = {
+			lodash.chunk(postsByKey[key], pageSize).forEach((posts, index) => {
+				postsByKeyPaged.push({
+					key: key,
+					posts: posts,
+					pageNumber: index,
 					hrefs: hrefs,
-					href: {
-						first: hrefs[0],
-						last: hrefs[hrefs.length - 1],
-					},
-					pages: pages.map((p, j) => ({ url: hrefs[j] })),
-					pageNumber: i,
-					totalPages: pageCount,
-				};
-			}
-
-			tagPages.push(...pages);
+					pages: new Array(totalPages)
+				});
+			});
 		}
+		return postsByKeyPaged;
+	}
 
-		return tagPages;
+	eleventyConfig.addCollection("tagPages", function (collectionApi) {
+		const filterTagList = (tags) =>
+		  (tags || []).filter((tag) => ["all", "posts"].indexOf(tag) === -1);
+
+		return createPagedCollection(collectionApi, {
+			grouperFn: (post) => filterTagList(post.data.tags),
+			pageSize: 10,
+			keySort: 'asc',
+			permalink: (key, pageNumber) => {
+				const keySlug = lodash.kebabCase(key);
+				if (pageNumber === 1) {
+					return `/tags/${keySlug}/`;
+				}
+				return `/tags/${keySlug}/${pageNumber}/`;
+			}
+		});
+	});
+
+	eleventyConfig.addCollection("postsByYear", collectionApi => {
+		return createPagedCollection(collectionApi, {
+			grouperFn: (post) => post.date.getFullYear(),
+			pageSize: 20,
+			keySort: 'desc',
+			permalink: (key, pageNumber) => {
+				if (pageNumber === 1) {
+					return `/${key}/`;
+				}
+				return `/${key}/${pageNumber}/`;
+			}
+		});
 	});
 
 	// 6. EVENTS (Pagefind)

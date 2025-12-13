@@ -4,7 +4,7 @@ pagination:
   data: collections.posts
   reverse: true
   size: 20
-  alias: posts
+  alias: allPosts
 permalink: "/{% if pagination.pageNumber > 0 %}posts/{{ pagination.pageNumber + 1 }}/{% endif %}"
 ---
 <div class="border-bottom-section">
@@ -12,5 +12,5 @@ permalink: "/{% if pagination.pageNumber > 0 %}posts/{{ pagination.pageNumber + 
 </div>
 
 {% set postList = pagination.items %}
-{% set pagination = pagination %}
 {% include "post-list.njk" %}
+{% include "pager.njk" %}
