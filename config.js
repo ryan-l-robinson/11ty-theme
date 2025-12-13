@@ -17,6 +17,9 @@ import lodash from 'lodash';
  * @param {Object} options
  */
 export default function (eleventyConfig, options = {}) {
+	// Passthrough for the sitemap stylesheet
+	eleventyConfig.addPassthroughCopy({ "11ty-theme/xsl/sitemap.xsl": "/sitemap.xsl" });
+
 	// 1. PLUGINS
 	eleventyConfig.addPlugin(pluginSyntaxHighlight, {
 		preAttributes: { tabindex: 0 },
