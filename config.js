@@ -41,7 +41,7 @@ export default function (eleventyConfig, options = {}) {
 		eleventyConfig.addPlugin(feedPlugin, {
 			outputPath: "/feed/feed.xml",
 			stylesheet: "pretty-atom-feed.xsl",
-			collection: { name: "posts", limit: 20 },
+			collection: { name: "posts", limit: 10 },
 			metadata: options.feedMetadata,
 		});
 	}
@@ -190,7 +190,7 @@ export default function (eleventyConfig, options = {}) {
 	eleventyConfig.addCollection("postsByYear", collectionApi => {
 		return createPagedCollection(collectionApi, {
 			grouperFn: (post) => post.date.getFullYear(),
-			pageSize: 20,
+			pageSize: 10,
 			keySort: 'desc',
 			permalink: (key, pageNumber) => {
 				if (pageNumber === 1) {

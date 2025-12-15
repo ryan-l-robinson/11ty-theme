@@ -3,7 +3,7 @@ layout: layouts/main.njk
 pagination:
   data: collections.posts
   reverse: true
-  size: 20
+  size: 10
   alias: allPosts
 permalink: "/{% if pagination.pageNumber > 0 %}posts/{{ pagination.pageNumber + 1 }}/{% endif %}"
 ---
