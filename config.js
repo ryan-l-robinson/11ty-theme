@@ -63,7 +63,7 @@ export default function (eleventyConfig, options = {}) {
 				id: page.url,
 				title: page.data.title || "",
 				description: page.data.description || "",
-				tags: page.data.tags || [],
+				tags: (page.data.tags || []).join(" "),
 			});
 		});
 
