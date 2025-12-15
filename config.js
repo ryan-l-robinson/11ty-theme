@@ -17,10 +17,12 @@ import lodash from 'lodash';
  * @param {Object} options
  */
 export default function (eleventyConfig, options = {}) {
-	// Passthrough for the sitemap stylesheet
-	eleventyConfig.addPassthroughCopy({ "11ty-theme/xsl/sitemap.xsl": "/sitemap.xsl" });
+	// Passthrough for the search JavaScript
+	eleventyConfig.addPassthroughCopy({
+		"node_modules/lunr/lunr.min.js": "js/lunr.min.js",
+	});
 
-	// 1. PLUGINS
+	// Plugins
 	eleventyConfig.addPlugin(pluginSyntaxHighlight, {
 		preAttributes: { tabindex: 0 },
 	});
@@ -46,7 +48,7 @@ export default function (eleventyConfig, options = {}) {
 		});
 	}
 
-	// 2. FILTERS
+	// Filters
 	eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
 		return DateTime.fromJSDate(dateObj, { zone: zone || "utc" }).toFormat(
 			format || "dd LLLL yyyy",
@@ -103,18 +105,18 @@ export default function (eleventyConfig, options = {}) {
 		return lodash.kebabCase(str.toLowerCase());
 	});
 
-	// 3. SHORTCODES
+	// Shortcodes
 	eleventyConfig.addShortcode("currentBuildDate", () =>
 		new Date().toISOString(),
 	);
 
 	eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
-	// 4. BUNDLES
+	// Bundles
 	eleventyConfig.addBundle("css", { toFileDirectory: "dist" });
 	eleventyConfig.addBundle("js", { toFileDirectory: "dist" });
 
-	// 5. COLLECTIONS
+	// Collections
 	function createPagedCollection(collectionApi, { grouperFn, pageSize, keySort = 'asc', permalink }) {
 		let postsByKey = {};
 		collectionApi.getFilteredByTag("posts").forEach(post => {
@@ -199,10 +201,5 @@ export default function (eleventyConfig, options = {}) {
 				return `/${key}/${pageNumber}/`;
 			}
 		});
-	});
-
-	// 6. EVENTS (Pagefind)
-	eleventyConfig.on("eleventy.after", () => {
-		execSync(`npx pagefind --site _site`, { encoding: "utf-8" });
 	});
 }
