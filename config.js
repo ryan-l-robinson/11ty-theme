@@ -97,7 +97,10 @@ export default function (eleventyConfig, options = {}) {
 	);
 
 	eleventyConfig.addFilter("slugify", (str) => {
-		return lodash.kebabCase(str);
+		if (!str) {
+			return;
+		}
+		return lodash.kebabCase(str.toLowerCase());
 	});
 
 	// 3. SHORTCODES
