@@ -14,10 +14,8 @@
     fetch('/search-index.json')
         .then(response => response.json())
         .then(indexData => {
-            console.log('Search index data:', indexData);
             // 4. Load the pre-built elasticlunr index
             idx = elasticlunr.Index.load(indexData);
-            console.log('Loaded index:', idx);
         }).catch(err => {
             console.error('Error fetching or parsing search index:', err);
             if(searchForm) searchForm.style.display = 'none';
@@ -31,7 +29,6 @@
         }
 
         const query = searchInput.value;
-        console.log('Search query:', query);
 
         // 6. Clear previous results
         searchResults.innerHTML = '';
@@ -49,14 +46,12 @@
             },
             expand: true // Search within phrases
         });
-        console.log('Search results:', results);
 
         // 8. Display the results
         if (results.length > 0) {
             const resultList = document.createElement('ul');
             results.forEach(function (result) {
-                // Since we used saveDocument(true), the doc is stored in the result
-                const doc = result.doc;
+                const doc = idx.documentStore.docs[result.ref];
                 if (doc) {
                     const listItem = document.createElement('li');
                     const link = document.createElement('a');
