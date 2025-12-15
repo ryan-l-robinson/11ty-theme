@@ -7,10 +7,5 @@ pagination:
   alias: allPosts
 permalink: "/{% if pagination.pageNumber > 0 %}posts/{{ pagination.pageNumber + 1 }}/{% endif %}"
 ---
-<div class="border-bottom-section">
-	{{ content | safe }}
-</div>
-
 {% set postList = pagination.items %}
-{% include "post-list.njk" %}
-{% include "pager.njk" %}
+{% include "post-list-pager.njk" %}

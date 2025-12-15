@@ -1,0 +1,6 @@
+{# Template for a page showing posts and a pager. Expects to be passed postList and pagination. #}
+<div class="border-bottom-section">
+	{{ content | safe }}
+</div>
+{% include "post-list.njk" %}
+{% include "pager.njk" %}
