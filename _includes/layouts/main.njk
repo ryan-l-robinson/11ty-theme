@@ -36,6 +36,7 @@
 		{%- css %}{% include "11ty-theme/css/containers.css" %}{% endcss %}
 		{%- css %}{% include "11ty-theme/css/header.css" %}{% endcss %}
 		{%- css %}{% include "11ty-theme/css/pagefind.css" %}{% endcss %}
+		{%- css %}{% include "11ty-theme/css/search.css" %}{% endcss %}
 		{%- css %}{% include "11ty-theme/css/main.css" %}{% endcss %}
 		{%- css %}{% include "11ty-theme/css/footer.css" %}{% endcss %}
 		<link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
@@ -60,17 +61,17 @@
 				<div class="container title-search">
 					<p class="site-title"><a href="/" class="icon-before {{ general.link_icon }}">{{ general.title }}</a></p>
 					<div id="search" class="search">
+						<!-- Remove pagefind once elasticlunr is working -->
 						<script src="/pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false, pageSize: 10 });"></script>
-					</div>
-
-					<!-- Elasticlunr Search -->
-					<div class="elastic-search">
-						<form id="search-form" role="search">
-							<label for="search-input" class="visually-hidden">Search this site</label>
-							<input type="search" id="search-input" placeholder="Search this site (elasticlunr)...">
-							<button type="submit">Search</button>
-						</form>
-						<div id="search-results"></div>
+						<!-- Elasticlunr Search -->
+						<div class="elastic-search">
+							<form id="search-form" role="search">
+								<label for="search-input" class="visually-hidden">Search this site</label>
+								<input type="search" id="search-input" placeholder="Search this site (elasticlunr)...">
+								<button type="submit" class="search-button">Search</button>
+							</form>
+							<div id="search-results"></div>
+						</div>
 					</div>
 				</div>
 			</header>
