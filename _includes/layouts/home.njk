@@ -5,7 +5,7 @@ pagination:
   reverse: true
   size: 10
   alias: allPosts
-permalink: "/{% if pagination.pageNumber > 0 %}posts/{{ pagination.pageNumber + 1 }}/{% endif %}"
+permalink: "/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}"
 ---
 {% set postList = pagination.items %}
 {% include "post-list-pager.njk" %}
