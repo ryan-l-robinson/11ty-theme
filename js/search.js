@@ -27,7 +27,7 @@
         if (event) {
           event.preventDefault();
         }
-        
+
         const query = searchInput.value;
 
         // 6. Clear previous results
@@ -42,8 +42,7 @@
             fields: {
                 title: { boost: 10 },
                 description: { boost: 5 },
-                tags: { boost: 3 },
-                content: { boost: 1 }
+                tags: { boost: 3 }
             },
             expand: true // Search within phrases
         });
@@ -74,7 +73,7 @@
     const handleInput = () => {
       // a11y: let screen readers know results are updating
       searchResults.setAttribute('aria-live', 'polite');
-      
+
       // Simple debounce
       setTimeout(() => {
         if (searchInput.value.trim() !== '') {
