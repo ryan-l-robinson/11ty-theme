@@ -8,7 +8,6 @@ import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
-import { execSync } from "child_process";
 import { DateTime } from "luxon";
 import lodash from 'lodash';
 
@@ -20,6 +19,7 @@ export default function (eleventyConfig, options = {}) {
 	// Passthrough for the search JavaScript
 	eleventyConfig.addPassthroughCopy({
 		"node_modules/lunr/lunr.min.js": "js/lunr.min.js",
+		"11ty-theme/js/search.js": "js/search.js",
 	});
 
 	// Plugins
