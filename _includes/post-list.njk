@@ -1,3 +1,4 @@
+{# Loop for a list of posts, passed in as postList. #}
 {%- css %}.post-list { counter-reset: start-from {{ (postListCounter or postList.length) + 1 }} }{% endcss %}
 {%- css %}{% include "11ty-theme/css/post-list.css" %}{% endcss %}
 
