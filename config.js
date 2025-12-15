@@ -192,6 +192,18 @@ export default function (eleventyConfig, options = {}) {
 		});
 	});
 
+	eleventyConfig.addCollection("postsByYearForList", collectionApi => {
+		let postsByYear = {};
+		collectionApi.getFilteredByTag("posts").forEach(post => {
+			const year = post.date.getFullYear();
+			if(!postsByYear[year]) {
+				postsByYear[year] = 0;
+			}
+			postsByYear[year]++;
+		});
+		return postsByYear;
+	});
+
 	// 6. EVENTS (Pagefind)
 	eleventyConfig.on("eleventy.after", () => {
 		execSync(`npx pagefind --site _site`, { encoding: "utf-8" });
