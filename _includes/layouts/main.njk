@@ -62,6 +62,16 @@
 					<div id="search" class="search">
 						<script src="/pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false, pageSize: 10 });"></script>
 					</div>
+
+					<!-- Elasticlunr Search -->
+					<div class="elastic-search">
+						<form id="search-form" role="search">
+							<label for="search-input" class="visually-hidden">Search this site</label>
+							<input type="search" id="search-input" placeholder="Search this site (elasticlunr)...">
+							<button type="submit">Search</button>
+						</form>
+						<div id="search-results"></div>
+					</div>
 				</div>
 			</header>
 			<main id="main">
@@ -82,5 +92,7 @@
 					<p>&copy; {% year %} <a href="{{ general.author.url }}">{{ general.author.name }}</a>. Powered by <a href="https://www.11ty.dev/">Eleventy</a>. The site's font is <a href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible from the Braille Institute</a>.</p>
 			</footer>
 		</div>
+		<script src="/js/elasticlunr.min.js"></script>
+		<script src="/js/search.js"></script>
 	</body>
 </html>
