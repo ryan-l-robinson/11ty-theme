@@ -61,9 +61,9 @@ export default function (eleventyConfig, options = {}) {
 		collection.forEach(page => {
 			index.addDoc({
 				id: page.url,
-				title: page.data.title,
-				description: page.data.description,
-				tags: page.data.tags,
+				title: page.data.title || "",
+				description: page.data.description || "",
+				tags: page.data.tags || [],
 			});
 		});
 
