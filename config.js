@@ -8,8 +8,10 @@ import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
+import { execSync } from "child_process";
 import { DateTime } from "luxon";
 import lodash from 'lodash';
+import elasticlunr from "elasticlunr";
 
 /**
  * @param {import("@11ty/eleventy").UserConfig} eleventyConfig
@@ -18,7 +20,7 @@ import lodash from 'lodash';
 export default function (eleventyConfig, options = {}) {
 	// Passthrough for the search JavaScript
 	eleventyConfig.addPassthroughCopy({
-		"node_modules/lunr/lunr.min.js": "js/lunr.min.js",
+		"node_modules/elasticlunr/elasticlunr.min.js": "js/elasticlunr.min.js",
 		"11ty-theme/js/search.js": "js/search.js",
 	});
 
@@ -29,9 +31,7 @@ export default function (eleventyConfig, options = {}) {
 	eleventyConfig.addPlugin(pluginNavigation);
 	eleventyConfig.addPlugin(HtmlBasePlugin);
 	eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
-
 	eleventyConfig.addPlugin(IdAttributePlugin);
-
 	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
 		extensions: "html",
 		formats: ["avif", "webp", "auto"],
@@ -49,6 +49,26 @@ export default function (eleventyConfig, options = {}) {
 	}
 
 	// Filters
+	eleventyConfig.addFilter("search", (collection) => {
+		var index = elasticlunr(function() {
+			this.addField("title");
+			this.addField("description");
+			this.addField("tags");
+			this.setRef("id");
+		});
+
+		collection.forEach(page => {
+			index.addDoc({
+				id: page.url,
+				title: page.data.title,
+				description: page.data.description,
+				tags: page.data.tags
+			});
+		});
+
+		return index.toJSON();
+	});
+
 	eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
 		return DateTime.fromJSDate(dateObj, { zone: zone || "utc" }).toFormat(
 			format || "dd LLLL yyyy",
@@ -201,5 +221,10 @@ export default function (eleventyConfig, options = {}) {
 				return `/${key}/${pageNumber}/`;
 			}
 		});
+	});
+
+	// 6. EVENTS (Pagefind)
+	eleventyConfig.on("eleventy.after", () => {
+		execSync(`npx pagefind --site _site`, { encoding: "utf-8" });
 	});
 }

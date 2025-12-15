@@ -35,6 +35,7 @@
 		{%- css %}{% include "11ty-theme/css/base.css" %}{% endcss %}
 		{%- css %}{% include "11ty-theme/css/containers.css" %}{% endcss %}
 		{%- css %}{% include "11ty-theme/css/header.css" %}{% endcss %}
+		{%- css %}{% include "11ty-theme/css/pagefind.css" %}{% endcss %}
 		{%- css %}{% include "11ty-theme/css/main.css" %}{% endcss %}
 		{%- css %}{% include "11ty-theme/css/footer.css" %}{% endcss %}
 		<link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
@@ -58,13 +59,8 @@
 				</nav>
 				<div class="container title-search">
 					<p class="site-title"><a href="/" class="icon-before {{ general.link_icon }}">{{ general.title }}</a></p>
-					<div class="search">
-						<form id="search-form" role="search">
-							<label for="search-input" class="visually-hidden">Search posts</label>
-							<input type="search" id="search-input" placeholder="Search posts..." aria-label="Search posts">
-							<button type="submit" class="visually-hidden">Search</button>
-						</form>
-						<div id="search-results" class="search-results" aria-live="polite"></div>
+					<div id="search" class="search">
+						<script src="/pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false, pageSize: 10 });"></script>
 					</div>
 				</div>
 			</header>
@@ -86,7 +82,5 @@
 					<p>&copy; {% year %} <a href="{{ general.author.url }}">{{ general.author.name }}</a>. Powered by <a href="https://www.11ty.dev/">Eleventy</a>. The site's font is <a href="https://brailleinstitute.org/freefont">Atkinson Hyperlegible from the Braille Institute</a>.</p>
 			</footer>
 		</div>
-		<script src="/js/lunr.min.js"></script>
-		<script src="/js/search.js"></script>
 	</body>
 </html>
