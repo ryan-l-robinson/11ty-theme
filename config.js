@@ -82,7 +82,7 @@ export default function (eleventyConfig, options = {}) {
 	eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
 		return (tags || [])
 			.filter(
-				(tag) => ["all", "posts", "sidebar", "tagPages"].indexOf(tag) === -1,
+				(tag) => ["all", "posts", "sidebar", "tagPages", "postsByYear"].indexOf(tag) === -1,
 			)
 			.sort();
 	});
