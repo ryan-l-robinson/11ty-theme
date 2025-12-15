@@ -1,8 +1,8 @@
 {# Common snippet used for years page and sidebar snippet #}
 {%- css %}{% include "11ty-theme/css/tags-list.css" %}{% endcss %}
 <ul class="tags-list">
-	{% for year, count in collections.postsByYearForList | dictsort(true, 'key') | reverse %}
-		{% set yearUrl %}/year/{{ year }}/{% endset %}
+	{% for year, count in collections.postsByYear.keys | dictsort(true, 'key') | reverse %}
+		{% set yearUrl %}/{{ year }}/{% endset %}
 		<li><a href="{{ yearUrl }}" class="post-tag">{{ year }}</a> ({{ count }})</li>
 	{% endfor %}
 </ul>

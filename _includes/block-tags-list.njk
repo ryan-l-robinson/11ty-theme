@@ -1,7 +1,7 @@
 {# Block showing all tags of posts. #}
 {% if page.url != '/tags/' and page.url != '/tags' %}
-	<aside class="sidebar-block" aria-label="Tags for posts">
-		<h2>Posts by Tag</h2>
+	<aside class="sidebar-block" aria-labelledby="posts-by-tag-label">
+		<h2 id="posts-by-tag-label">Posts by Tag</h2>
 		<div class="sidebar-container">
 			{% include "tags-list.njk" %}
 		</div>

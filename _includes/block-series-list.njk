@@ -1,7 +1,7 @@
 {# Block showing other pages in the same series as the current page. #}
 {% if series %}
-	<aside class="sidebar-block" aria-label="Posts in this series">
-		<h2>Posts in {{ series }} Series</h2>
+	<aside class="sidebar-block" aria-labelledby="posts-in-series-label">
+		<h2 id="posts-in-series-label">Posts in {{ series }} Series</h2>
 		<ol class="series-list">
 			{% for post in collections.posts | postsWithMetadata("series", series) %}
     			<li><a href="{{ post.url }}">{{ post.data.title }}</a></li>

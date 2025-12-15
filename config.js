@@ -82,7 +82,7 @@ export default function (eleventyConfig, options = {}) {
 	eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
 		return (tags || [])
 			.filter(
-				(tag) => ["all", "posts", "sidebar", "tagPages", "postsByYear"].indexOf(tag) === -1,
+				(tag) => ["all", "posts", "sidebar", "tagPages", "postsByYear", "postsByYear.pages", "tagPages.pages"].indexOf(tag) === -1,
 			)
 			.sort();
 	});
@@ -157,7 +157,16 @@ export default function (eleventyConfig, options = {}) {
 				});
 			});
 		}
-		return postsByKeyPaged;
+
+		const keys = {};
+		Object.keys(postsByKey).forEach(key => {
+			keys[key] = postsByKey[key].length;
+		});
+
+		return {
+			pages: postsByKeyPaged,
+			keys: keys
+		};
 	}
 
 	eleventyConfig.addCollection("tagPages", function (collectionApi) {
@@ -190,18 +199,6 @@ export default function (eleventyConfig, options = {}) {
 				return `/${key}/${pageNumber}/`;
 			}
 		});
-	});
-
-	eleventyConfig.addCollection("postsByYearForList", collectionApi => {
-		let postsByYear = {};
-		collectionApi.getFilteredByTag("posts").forEach(post => {
-			const year = post.date.getFullYear();
-			if(!postsByYear[year]) {
-				postsByYear[year] = 0;
-			}
-			postsByYear[year]++;
-		});
-		return postsByYear;
 	});
 
 	// 6. EVENTS (Pagefind)
