@@ -7,32 +7,21 @@
         return;
     }
 
-    // 2. Set up our data store and lunr index
-    let documents = [];
+    // 2. Set up our elasticlunr index
     let idx;
 
     // 3. Fetch the search index
     fetch('/search-index.json')
         .then(response => response.json())
-        .then(docs => {
-            documents = docs;
-            // 4. Initialize lunr.js with the fields we want to search
-            idx = lunr(function () {
-                this.ref('url');
-                this.field('title', { boost: 10 });
-                this.field('content');
-
-                // 5. Add the documents from the JSON file to the index
-                documents.forEach(function (doc) {
-                    this.add(doc);
-                }, this);
-            });
+        .then(indexData => {
+            // 4. Load the pre-built elasticlunr index
+            idx = elasticlunr.Index.load(indexData);
         }).catch(err => {
             console.error('Error fetching or parsing search index:', err);
             if(searchForm) searchForm.style.display = 'none';
         });
 
-    // 6. Handle search form submission
+    // 5. Handle search form submission
     const performSearch = (event) => {
         // a11y: allow enter key to submit without reloading page
         if (event) {
@@ -41,25 +30,34 @@
         
         const query = searchInput.value;
 
-        // 7. Clear previous results
+        // 6. Clear previous results
         searchResults.innerHTML = '';
 
         if (!query || !idx) {
             return;
         }
 
-        // 8. Perform the search
-        const results = idx.search(query);
+        // 7. Perform the search
+        const results = idx.search(query, {
+            fields: {
+                title: { boost: 10 },
+                description: { boost: 5 },
+                tags: { boost: 3 },
+                content: { boost: 1 }
+            },
+            expand: true // Search within phrases
+        });
 
-        // 9. Display the results
+        // 8. Display the results
         if (results.length > 0) {
             const resultList = document.createElement('ul');
             results.forEach(function (result) {
-                const doc = documents.find(d => d.url === result.ref);
+                // Since we used saveDocument(true), the doc is stored in the result
+                const doc = result.doc;
                 if (doc) {
                     const listItem = document.createElement('li');
                     const link = document.createElement('a');
-                    link.href = doc.url;
+                    link.href = doc.id; // The 'id' is the URL
                     link.textContent = doc.title;
                     listItem.appendChild(link);
                     resultList.appendChild(listItem);

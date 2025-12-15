@@ -50,11 +50,12 @@ export default function (eleventyConfig, options = {}) {
 
 	// Filters
 	eleventyConfig.addFilter("search", (collection) => {
-		var index = elasticlunr(function() {
+		var index = elasticlunr(function () {
+			this.setRef("id");
 			this.addField("title");
 			this.addField("description");
 			this.addField("tags");
-			this.setRef("id");
+			this.saveDocument(true);
 		});
 
 		collection.forEach(page => {
@@ -62,7 +63,7 @@ export default function (eleventyConfig, options = {}) {
 				id: page.url,
 				title: page.data.title,
 				description: page.data.description,
-				tags: page.data.tags
+				tags: page.data.tags,
 			});
 		});
 
