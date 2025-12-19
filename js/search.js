@@ -105,4 +105,5 @@
 
     searchForm.addEventListener('submit', performSearch);
     searchInput.addEventListener('keyup', handleInput);
+    searchInput.addEventListener('input', handleInput);
 })();
