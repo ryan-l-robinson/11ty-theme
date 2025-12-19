@@ -29,10 +29,14 @@
 }
 
 .search-results {
-  border: 1px solid var(--border-color);
-	width: calc(100% - 2px);
-  max-height: 400px;
-  overflow-y: auto;
+	width: 100%;
+}
+
+.search-results-wrapper {
+	border: 1px solid var(--border-color);
+	padding: 1rem;
+	max-height: 400px;
+	overflow-y: auto;
 }
 
 .search-results-heading {
@@ -45,11 +49,3 @@
   margin: 0;
 }
 
-.search-results li a {
-  display: block;
-  padding: 0.5em 1em;
-}
-
-.search-results p {
-	padding: 0.5em 1em;
-}
