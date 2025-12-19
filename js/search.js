@@ -57,7 +57,7 @@
             const resultList = document.createElement('ul');
 
             const sr_heading = document.createElement('h2');
-            sr_heading.textContent = `${results.length} search result${results.length === 1 ? '' : 's'} for "${query}"`;
+            sr_heading.textContent = `${results.length} Search Result${results.length === 1 ? '' : 's'} for "${query}"`;
             sr_heading.classList.add('search-results-heading');
             searchResults.appendChild(sr_heading);
 
