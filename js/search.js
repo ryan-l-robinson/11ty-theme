@@ -32,6 +32,8 @@
 
         // 6. Clear previous results
         searchResults.innerHTML = '';
+        searchInput.setAttribute('aria-expanded', 'false');
+        searchResults.hidden = true;
 
         if (!query || !idx) {
             return;
@@ -41,15 +43,24 @@
         const results = idx.search(query, {
             fields: {
                 title: { boost: 10 },
-                description: { boost: 5 },
-                tags: { boost: 3 }
+								tags: { boost: 5 },
+								description: { boost: 3 },
+                content: { boost: 1 }
             },
             expand: true // Search within phrases
         });
 
         // 8. Display the results
+        searchResults.hidden = false;
         if (results.length > 0) {
+            searchInput.setAttribute('aria-expanded', 'true');
             const resultList = document.createElement('ul');
+
+            const sr_heading = document.createElement('h2');
+            sr_heading.textContent = `${results.length} search result${results.length === 1 ? '' : 's'} for "${query}"`;
+            sr_heading.classList.add('search-results-heading');
+            searchResults.appendChild(sr_heading);
+
             results.forEach(function (result) {
                 const doc = idx.documentStore.docs[result.ref];
                 if (doc) {
@@ -58,6 +69,13 @@
                     link.href = doc.id; // The 'id' is the URL
                     link.textContent = doc.title;
                     listItem.appendChild(link);
+
+                    if (doc.description) {
+                        const description = document.createElement('p');
+                        description.textContent = doc.description;
+                        listItem.appendChild(description);
+                    }
+
                     resultList.appendChild(listItem);
                 }
             });
@@ -79,6 +97,8 @@
           performSearch();
         } else {
           searchResults.innerHTML = '';
+          searchResults.hidden = true;
+          searchInput.setAttribute('aria-expanded', 'false');
         }
       }, 200);
     }

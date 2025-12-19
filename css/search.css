@@ -20,3 +20,29 @@
 	border: 0;
 	border-radius: 0 5px 5px 0;
 }
+
+.search-results {
+  border: 1px solid var(--border-color);
+	width: calc(100% - 2px);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.search-results-heading {
+	margin: 0;
+}
+
+.search-results ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-results li a {
+  display: block;
+  padding: 0.5em 1em;
+}
+
+.search-results p {
+	padding: 0.5em 1em;
+}

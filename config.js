@@ -53,10 +53,16 @@ export default function (eleventyConfig, options = {}) {
 		var index = elasticlunr(function () {
 			this.setRef("id");
 			this.addField("title");
-			this.addField("description");
 			this.addField("tags");
+			this.addField("description");
+			this.addField("content");
 			this.saveDocument(true);
 		});
+
+		const stripHtml = (value) => {
+			if (!value) return "";
+			return value.replace(/(<([^>]+)>)/gi, "");
+		};
 
 		collection.forEach(page => {
 			index.addDoc({
@@ -64,6 +70,7 @@ export default function (eleventyConfig, options = {}) {
 				title: page.data.title || "",
 				description: page.data.description || "",
 				tags: (page.data.tags || []).join(" "),
+				content: stripHtml(page.rawInput)
 			});
 		});
 

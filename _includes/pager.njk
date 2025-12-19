@@ -2,8 +2,8 @@
 {% set totalPages = pagination.pages | length %}
 {% if pagination and totalPages > 1 %}
 	{%- css %}{% include "11ty-theme/css/pager.css" %}{% endcss %}
-	<nav aria-labelledby="posts-pagination">
-		<h2 class="posts-pagination visually-hidden">Pagination Links to More Posts</h2>
+	<nav aria-labelledby="posts-pagination-heading">
+		<h2 id="posts-pagination-heading" class="posts-pagination visually-hidden">Pagination Links to More Posts</h2>
 		<ul class="pager">
 			{%- set currentIndex = pagination.pageNumber %}
 			{%- if currentIndex > 0 %}
