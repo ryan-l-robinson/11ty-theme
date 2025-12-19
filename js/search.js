@@ -7,8 +7,12 @@
     return;
   }
 
+  // Accessibility: let screen readers know results are updating
+  searchResults.setAttribute('aria-live', 'polite');
+
   // 2. Set up our elasticlunr index
   let idx;
+  let debounceTimer;
 
   // 3. Fetch the search index
   fetch('/search-index.json')
@@ -102,12 +106,11 @@
     }
   };
 
+	// Don't update until 500ms of inactivity, to avoid overwhelming screen reader users.
   const handleInput = () => {
-    // a11y: let screen readers know results are updating
-    searchResults.setAttribute('aria-live', 'polite');
+    clearTimeout(debounceTimer);
 
-    // Simple debounce
-    setTimeout(() => {
+    debounceTimer = setTimeout(() => {
       if (searchInput.value.trim() !== '') {
   	    performSearch();
 			}
@@ -116,10 +119,9 @@
         searchResults.hidden = true;
         searchInput.setAttribute('aria-expanded', 'false');
       }
-    }, 200);
+    }, 500);
   }
 
   searchForm.addEventListener('submit', performSearch);
-  searchInput.addEventListener('keyup', handleInput);
   searchInput.addEventListener('input', handleInput);
 })();
