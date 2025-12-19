@@ -61,22 +61,18 @@
 				<div class="container title-search">
 					<p class="site-title"><a href="/" class="icon-before {{ general.link_icon }}">{{ general.title }}</a></p>
 					<div id="search" class="search">
-						<!-- Remove pagefind once elasticlunr is working -->
-						<script src="/pagefind/pagefind-ui.js" onload="new PagefindUI({ element: '#search', showImages: false, pageSize: 10 });"></script>
-						<!-- Elasticlunr Search temporarily commented out until I have more time to finish it.
 						<div class="elastic-search">
-							<form id="search-form" role="search">
+							<form id="search-form" class="search-form" role="search">
 								<label for="search-input" class="visually-hidden">Search this site</label>
-								<input type="search" id="search-input" placeholder="Search this site (elasticlunr)...">
+								<input type="search" id="search-input" class="search-input" placeholder="Search this site" aria-controls="search-results" aria-autocomplete="list">
 								<button type="submit" class="search-button">Search</button>
 							</form>
-							<div id="search-results"></div>
 						</div>
-						 -->
 					</div>
 				</div>
 			</header>
 			<main id="main">
+				<nav id="search-results" class="search-results" aria-label="Search results navigation" hidden></nav>
 				<div class="main-content">
 					<h1>{{ title }}</h1>
 					{{ content | safe }}
