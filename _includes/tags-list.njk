@@ -3,6 +3,6 @@
 <ul class="tags-list">
 	{% for tag in collections | getKeys | filterTagList %}
 		{% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-		<li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a> ({{ collections[tag].length }})</li>
+		<li><a href="{{ tagUrl }}" class="post-tag"{% if tagDescriptions[tag] %} title="{{ tagDescriptions[tag] }}"{% endif %}>{{ tag }}</a> ({{ collections[tag].length }})</li>
 	{% endfor %}
 </ul>
