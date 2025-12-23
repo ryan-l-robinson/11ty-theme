@@ -6,6 +6,9 @@
 {% for post in postList %}
 	<article class="border-bottom-section">
 		<h2 class="post-list-item-title"><a href="{{ post.url }}" class="post-list-item-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></h2>
+		{% if post.data.series %}
+			<div class="post-list-metadata"><p>Series: {{ post.data.series }}</p></div>
+		{% endif %}
 		<div class="post-list-metadata">
 			<p class="post-list-item-time-container"><time class="post-list-item-time" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL d, yyyy") }}</time></p>
 			{% if post.data.tags | filterTagList | length %}
