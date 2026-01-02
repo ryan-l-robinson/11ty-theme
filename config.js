@@ -70,7 +70,8 @@ export default function (eleventyConfig, options = {}) {
 				title: page.data.title || "",
 				description: page.data.description || "",
 				tags: (page.data.tags || []).join(" "),
-				content: stripHtml(page.rawInput)
+				content: stripHtml(page.rawInput),
+				date: page.date
 			});
 		});
 

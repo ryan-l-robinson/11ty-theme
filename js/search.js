@@ -54,9 +54,46 @@
       expand: true // Search within phrases
     });
 
-    // 8. Display the results
+    // 8. Boost results based on date, then display
+    const boostedResults = results.map(result => {
+      const doc = idx.documentStore.docs[result.ref];
+      if (!doc) return null;
+
+      const newResult = {
+        doc: doc,
+        originalScore: result.score,
+        newScore: result.score
+      };
+
+      if (doc.date) {
+        const postDate = new Date(doc.date);
+        const now = new Date();
+        const ageInDays = (now.getTime() - postDate.getTime()) / (1000 * 60 * 60 * 24);
+
+				if (ageInDays >= 0) {
+					// How heavily older posts get penalized.
+					// For example, a decayRate of 0.001 means it would take about 337 days
+					// for a post that is 5% more relevant to be ranked lower.
+					const decayRate = 0.001;
+
+					// How much the date factor can overcome relevance other.
+					// i.e. a 0.3 scalingFactor will only overcome at most a 30% relevance score difference from the content.
+					const scalingFactor = 0.3;
+
+					// This can end up between 0 for a really old post and 1 for a brand new post.
+					const dateBoost = Math.exp(-decayRate * ageInDays);
+
+					// The boost can now be between 1 (no boost) and 1 + scalingFactor. This is why the scalingFactor can only overcome a certain amount of relevance.
+          const boost = 1 + scalingFactor * dateBoost;
+          newResult.newScore = result.score * boost;
+        }
+      }
+      return newResult;
+    }).filter(Boolean).sort((a, b) => b.newScore - a.newScore);
+
+    // 9. Display the results
     searchResults.hidden = false;
-		if (results.length > 0) {
+		if (boostedResults.length > 0) {
 			// Create a wrapper div for spacing.
 			const wrapper = document.createElement('div');
 			wrapper.classList.add('search-results-wrapper');
@@ -68,13 +105,13 @@
 
 			// Heading for clarity and better navigation.
       const sr_heading = document.createElement('h2');
-      sr_heading.textContent = `${results.length} Search Result${results.length === 1 ? '' : 's'} for "${query}"`;
+      sr_heading.textContent = `${boostedResults.length} Search Result${boostedResults.length === 1 ? '' : 's'} for "${query}"`;
       sr_heading.classList.add('search-results-heading');
       wrapper.appendChild(sr_heading);
 
 			// Results added as list items.
-      results.forEach(function (result) {
-        const doc = idx.documentStore.docs[result.ref];
+      boostedResults.forEach(function (result) {
+        const doc = result.doc;
 				if (doc) {
 					// Create a list item for each result
 					const listItem = document.createElement('li');
