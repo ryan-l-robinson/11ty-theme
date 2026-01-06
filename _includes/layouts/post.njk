@@ -27,6 +27,8 @@ layout: layouts/main.njk
 		{% endif %}
 	</div>
 
+	{% if seriesDescriptions[series] %}<p>Series Description: {{ seriesDescriptions[series] }} You can navigate other posts in the series using the list of links in the sidebar.</p>{% endif %}
+
 	{{ content | safe }}
 
 	{%- if collections.posts %}
