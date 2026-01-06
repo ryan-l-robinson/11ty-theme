@@ -231,9 +231,4 @@ export default function (eleventyConfig, options = {}) {
 			}
 		});
 	});
-
-	// 6. EVENTS (Pagefind)
-	eleventyConfig.on("eleventy.after", () => {
-		execSync(`npx pagefind --site _site`, { encoding: "utf-8" });
-	});
 }
