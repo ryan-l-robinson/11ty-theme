@@ -1,3 +1,7 @@
+## Moved to Codeberg
+
+This project has been relocated to [my Codeberg](https://codeberg.org/ryanrobinson/11ty-theme).
+
 ## Overview
 
 Ryan's eleventy theme, shared between other projects. There is still room for improvement, but the general idea does work.
